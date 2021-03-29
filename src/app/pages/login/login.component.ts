@@ -21,6 +21,9 @@ export class LoginComponent implements OnInit {
   }
   submit() {
     console.log(this.fgLogin.value);
+    if (this.fgLogin.value.userName === 'admin' && this.fgLogin.value.password === 'admin') {
+      this.router.navigateByUrl('/admin-dashboard');
+    }
   }
 
 
