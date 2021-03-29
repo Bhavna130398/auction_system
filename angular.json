@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "auction-system"
+    }
+  },
+  "defaultProject": "auction-system",
+  "cli": {
+    "analytics": false
+  }
 }
