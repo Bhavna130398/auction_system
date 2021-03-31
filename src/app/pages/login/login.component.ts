@@ -10,6 +10,7 @@ import { CommonService } from 'src/app/providers/common.service';
 })
 export class LoginComponent implements OnInit {
   fgLogin: FormGroup;
+  console: Console;
   constructor(private fb: FormBuilder, private cs: CommonService, private router: Router) {
     this.fgLogin = this.fb.group({
       userName: ['', Validators.required],
@@ -19,8 +20,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   submit() {
-    console.log(this.fgLogin.value);
+
     if (this.fgLogin.value.userName === 'admin' && this.fgLogin.value.password === 'admin') {
       this.router.navigateByUrl('/admin-dashboard');
     }
