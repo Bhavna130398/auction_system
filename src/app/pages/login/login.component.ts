@@ -22,10 +22,12 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-
-    if (this.fgLogin.value.userName === 'admin' && this.fgLogin.value.password === 'admin') {
-      this.router.navigateByUrl('/admin-dashboard');
-    }
+    this.cs.loginUser(this.fgLogin.value).subscribe((res: any) => {
+      console.log('res :' + res);
+    })
+    // if (this.fgLogin.value.userName === 'admin' && this.fgLogin.value.password === 'admin') {
+    //   this.router.navigateByUrl('/admin-dashboard');
+    // }
   }
 
 
