@@ -6,5 +6,7 @@ import { HttpClient } from '@angular/common/http'
 })
 export class CommonService {
 
-  constructor(private http: HttpClient) { }
+  constructor(public httpClient: HttpClient) { }
+
+
 }
