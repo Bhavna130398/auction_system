@@ -9,11 +9,10 @@ import { CommonService } from 'src/app/providers/common.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  fgLogin: FormGroup;
-  console: Console;
+  fgLogin: FormGroup; showError: string = '';
   constructor(private fb: FormBuilder, private cs: CommonService, private router: Router) {
     this.fgLogin = this.fb.group({
-      userName: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
@@ -23,7 +22,11 @@ export class LoginComponent implements OnInit {
 
   submit() {
     this.cs.loginUser(this.fgLogin.value).subscribe((res: any) => {
-      console.log('res :' + res);
+      if (res) {
+        this.router.navigateByUrl('/admin-dashboard');
+      } else {
+        this.showError = 'Login Failed!';
+      }
     })
     // if (this.fgLogin.value.userName === 'admin' && this.fgLogin.value.password === 'admin') {
     //   this.router.navigateByUrl('/admin-dashboard');
