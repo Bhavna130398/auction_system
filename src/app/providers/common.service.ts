@@ -9,11 +9,11 @@ export class CommonService {
 
   constructor(public http: HttpClient) { }
 
-  loginUser(data) {
-    return this.http.post(environment.ApiUrl + 'login', data)
-  }
-  registerUser(data) {
-    return this.http.post(environment.ApiUrl + 'registerUser', data)
+  loginUser(data: any) {
+    return this.http.post(environment.ApiUrl + 'login', data);
   }
 
+  registerUser(data: any) {
+    return this.http.post(environment.ApiUrl + 'register', data);
+  }
 }
