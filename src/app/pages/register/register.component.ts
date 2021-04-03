@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CommonService } from 'src/app/providers/common.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { CommonService } from 'src/app/providers/common.service';
 })
 export class RegisterComponent implements OnInit {
   fgRegister: FormGroup;
-  constructor(private fb: FormBuilder, private cs: CommonService) {
+  constructor(private fb: FormBuilder, private cs: CommonService, private router: Router) {
     this.fgRegister = this.fb.group({
       name: ['', Validators.required],
       email: ['', Validators.required],
@@ -19,7 +20,7 @@ export class RegisterComponent implements OnInit {
       address: ['', Validators.required],
       isVerified: [''],
       role: ['', Validators.required],
-      userName: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
@@ -28,6 +29,13 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.fgRegister.value);
+    this.cs.registerUser(this.fgRegister.value).subscribe((res: any) => {
+      if (res) {
+        this.router.navigateByUrl('/login');
+        this.fgRegister.reset();
+      } else {
+        console.log('error');
+      }
+    });
   }
 }

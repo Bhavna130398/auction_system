@@ -9,7 +9,6 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent implements OnInit {
-  fgpending: FormGroup;
   opened = true;
   over = 'side';
   expandHeight = '42px';
@@ -38,19 +37,10 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit() {
     // this.user = JSON.parse(sessionStorage.getItem('user'));
   }
-  logout() {
-    sessionStorage.clear();
-    this.router.navigate(['/']);
-  }
-
   submit(id: number) {
-    // console.log(id)
-    this.router.navigate(['/dashboard/pending' + '/' + id]);
-    //   this.cs.get_pending_report(id).subscribe((resp:any)=>{
-    //   console.log(resp);  
-    // })
+
   }
+  logout() {
 
-
-
+  }
 }
