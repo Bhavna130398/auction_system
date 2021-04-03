@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
       address: ['', Validators.required],
       isVerified: [''],
       role: ['', Validators.required],
-      userName: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
