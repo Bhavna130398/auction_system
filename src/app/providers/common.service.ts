@@ -16,4 +16,7 @@ export class CommonService {
   registerUser(data: any) {
     return this.http.post(environment.ApiUrl + 'register', data);
   }
+  addProduct(data: any) {
+    return this.http.post(environment.ApiUrl + 'add-product', data);
+  }
 }

@@ -4,7 +4,7 @@
   .spacer {
     flex: 1 1 auto;
   }  
-  .container {
+  .container-sidenav {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -81,3 +81,4 @@
   .container1>button{
     color: white;
   }
+

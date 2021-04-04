@@ -1,0 +1,58 @@
+<div class="auction-container">
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <span>Auction</span>
+            <button mat-button (click)="addProduct()">Add Product</button>
+            <button mat-button (click)="showProducts()">My Products</button>
+            <span class="example-spacer"></span>
+            <span>
+                <button mat-icon-button aria-label="Example icon-button with a heart icon">
+                    <mat-icon>account_circle</mat-icon> Profile
+                </button> &nbsp; &nbsp;&nbsp;&nbsp;
+                <button mat-icon-button aria-label="Example icon-button with a heart icon">
+                    <mat-icon>power_settings_new</mat-icon> Logout
+                </button>
+            </span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div class="container col-6 mt-5" *ngIf="showForm">
+        <div class="card">
+            <form [formGroup]="fgAddProduct" style="padding: 10px;">
+                <div class="form-group">
+                    <label for="inputName" class="form-label">Product Name</label>
+                    <input type="text" class="form-control" id="inputName" placeholder="Enter product name"
+                        formControlName="productname" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputAddress" class="form-label">Product Type</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Enter Product Type"
+                        formControlName="producttype" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Product Discription</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" formControlName="productdiscription"
+                        rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Product Image</label>
+                    <br />
+                    <div class="col-12">
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1"
+                            formControlName="productimage" accept=".png, .jpg, .jpeg">
+                        <!-- accept="image/x-png,image/gif,image/jpeg" -->
+                    </div>
+                </div>
+                <br />
+                <div style="text-align: center;">
+                    <button type="submit" class="btn btn-primary" [disabled]="!fgAddProduct.valid"
+                        (click)="onSubmit()">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <app-product *ngIf="!showForm"></app-product>
+</div>
