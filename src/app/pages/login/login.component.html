@@ -18,9 +18,10 @@
                     <button type="submit" class="btn btn-primary " [disabled]="!fgLogin.valid"
                         (click)="submit()">Login</button>
                 </div>
-
-                <span *ngIf="showError">{{showError}}</span>
             </form>
+            <span *ngIf="showError">
+                <p style="color: red;text-align: center;">{{showError}}</p>
+            </span>
         </div>
     </div>
     <br />

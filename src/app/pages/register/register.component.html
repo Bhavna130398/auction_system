@@ -45,14 +45,26 @@
             </div>
             <div class="form-group">
                 <label for="validationCustom04" class="form-label">Role</label>
-                <select class="form-select" id="validationCustom04" formControlName="role" required>
-                    <option selected value="auctionar">Auctionar</option>
+                <select class="form-select" aria-label="Default select example" formControlName="role">
+                    <option selected>Select Role</option>
+                    <option value="auctionar">Auctionar</option>
                     <option value="bidder">Biddar</option>
                 </select>
+                <!-- <select class="form-select" aria-label="Default select example" formControlName="role" required>
+                    <option selected>Select Role</option>
+                    <option value="auctionar">Auctionar</option>
+                    <option value="bidder">Biddar</option>
+                </select> -->
                 <div class="invalid-feedback">
                     Please select a valid role.
                 </div>
             </div>
+            <!-- <select class="form-select" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select> -->
             <div class="form-group">
                 <label for="inputUsername" class="form-label">Username</label>
                 <input type="text" class="form-control" id="inputUsername" placeholder="Enter Username"

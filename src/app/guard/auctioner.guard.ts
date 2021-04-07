@@ -5,18 +5,22 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuctionerGuard implements CanActivate {
   constructor(private router: Router) { }
+
   canActivate(
-    route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (localStorage.getItem('key') == null) {
+      this.router.navigate(['login']);
       return false;
-    } else if (localStorage.getItem('role') == 'admin') {
+    } else if (localStorage.getItem('role') == 'auctioner') {
+      console.log(localStorage.getItem('role'));
       return true;
     } else {
       localStorage.removeItem('key');
       localStorage.removeItem('role');
-      return false;
+      return this.router.parseUrl('login');
     }
   }
 

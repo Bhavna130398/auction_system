@@ -50,22 +50,22 @@
                     <a routerLink="/admin/biddar" routerLinkActive="active" mat-list-item class="ml-2"
                         style="font-size:15px;">
                         <!-- <mat-icon color="warn" matPrefix>account_circle</mat-icon>&nbsp; -->
-                        <mat-icon color="warn" matPrefix>monetization_on</mat-icon>&nbsp;
+                        <mat-icon color="primary" matPrefix>monetization_on</mat-icon>&nbsp;
                         Biddar
                     </a>
                 </mat-nav-list>
 
                 <mat-nav-list>
-                    <a routerLink="/admin/biddar" routerLinkActive="active" mat-list-item class="ml-2"
+                    <a routerLink="/admin/auctioner" routerLinkActive="active" mat-list-item class="ml-2"
                         style="font-size:15px;">
-                        <mat-icon color="warn" matPrefix>account_circle</mat-icon>&nbsp;
+                        <mat-icon color="primary" matPrefix>account_circle</mat-icon>&nbsp;
                         Auctioner
                     </a>
                 </mat-nav-list>
                 <mat-nav-list>
                     <a routerLink="/admin/biddar" routerLinkActive="active" mat-list-item class="ml-2"
                         style="font-size:15px;">
-                        <mat-icon color="warn" matPrefix>shopping_basket</mat-icon>&nbsp;
+                        <mat-icon color="primary" matPrefix>shopping_basket</mat-icon>&nbsp;
                         Products
                     </a>
                 </mat-nav-list>
@@ -96,14 +96,11 @@
                         </mat-list-item>
                     </mat-nav-list>
                 </mat-expansion-panel> -->
-
             </mat-accordion>
 
             <mat-nav-list>
-                <a routerLink="/admin/biddar" routerLinkActive="active" mat-list-item class="ml-2"
-                    style="font-size:15px;">
-                    <mat-icon color="warn" matPrefix>power_settings_new</mat-icon>&nbsp;
-                    Logout
+                <a mat-list-item class="ml-2" style="font-size:15px;" (click)="logout()">
+                    <mat-icon color="warn" matPrefix>power_settings_new</mat-icon>&nbsp;Logout
                 </a>
             </mat-nav-list>
 
@@ -122,6 +119,8 @@
             </mat-toolbar-row>
         </mat-toolbar>
         <!-- <router-outlet></router-outlet> -->
+        <app-auctioner></app-auctioner>
+        <!-- <app-biddar></app-biddar> -->
     </mat-sidenav-content>
 </mat-sidenav-container>
 

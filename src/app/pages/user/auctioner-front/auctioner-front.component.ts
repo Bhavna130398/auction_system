@@ -21,6 +21,18 @@ export class AuctionerFrontComponent {
 
   // ngOnInit(): void {
   // }
+  getBase64(event) {
+    let me = this;
+    let file = event.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      console.log(reader.result);
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+  }
   addProduct() {
     this.showForm = true;
   }
@@ -28,8 +40,9 @@ export class AuctionerFrontComponent {
     this.showForm = false;
   }
   onSubmit() {
-    this.cs.addProduct(this.fgAddProduct.value).subscribe((res: any) => {
-      console.log(res);
-    })
+    this.getBase64(this.fgAddProduct.value.productimage);
+    // this.cs.addProduct(this.fgAddProduct.value).subscribe((res: any) => {
+    //   console.log(res);
+    // })
   }
 }

@@ -9,17 +9,29 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ProductComponent } from './pages/user/product/product.component';
 import { AuthGuard } from './guard/auth.guard';
+import { AuctionerGuard } from './guard/auctioner.guard';
+import { BidderGuard } from './guard/bidder.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'admin/dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard] },
-  { path: 'admin/biddar', component: BiddarComponent, canActivate: [AuthGuard] },
-  { path: 'admin/auctioner', component: AuctionerComponent, canActivate: [AuthGuard] },
-  { path: 'user/auctioner', component: AuctionerFrontComponent, canActivate: [AuthGuard] },
-  { path: 'user/biddar', component: BiddarFrontComponent, canActivate: [AuthGuard] },
-  { path: 'user/product', component: ProductComponent, canActivate: [AuthGuard] },
+  {
+    path: 'admin', canActivate: [AuthGuard],
+    children: [
+      { path: '', component: AdminDashboardComponent },
+      { path: 'biddar', component: BiddarComponent },
+      { path: 'auctioner', component: AuctionerComponent },
+    ]
+  },
+
+  // { path: 'admin/dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard] },
+  // { path: 'admin/biddar', component: BiddarComponent, canActivate: [AuthGuard] },
+  // { path: 'admin/auctioner', component: AuctionerComponent, canActivate: [AuthGuard] },
+
+  { path: 'user/auctioner', component: AuctionerFrontComponent, canActivate: [AuctionerGuard] },
+  { path: 'user/biddar', component: BiddarFrontComponent, canActivate: [BidderGuard] },
+  { path: 'user/product', component: ProductComponent },
 ];
 
 @NgModule({

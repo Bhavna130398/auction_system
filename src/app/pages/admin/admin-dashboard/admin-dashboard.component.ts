@@ -40,7 +40,7 @@ export class AdminDashboardComponent implements OnInit {
   }
   logout() {
     sessionStorage.clear();
-    this.router.navigate(['/']);
+    this.router.navigateByUrl('/login');
   }
 
   submit(id: number) {

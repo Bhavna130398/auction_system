@@ -22,16 +22,16 @@ export class LoginComponent implements OnInit {
 
   submit() {
     this.cs.loginUser(this.fgLogin.value).subscribe((res: any) => {
-      if (res) {
+      if (res.length != 0) {
+        if (res.role == 'auctionar') {
+          this.router.navigate(['/user/auctioner']);
+        } else if (res.role == 'bidder') {
+          this.router.navigateByUrl('/user/biddar');
+        } else {
+          this.router.navigateByUrl('/admin');
+        }
         localStorage.setItem('key', res._id);
         localStorage.setItem('role', res.role);
-        // if (res.role === 'auctionar') {
-        //   this.router.navigateByUrl('/user/auctioner');
-        // } else if (res.role === 'bidder') {
-        //   this.router.navigateByUrl('/user/biddar');
-        // } else {
-        //   this.router.navigateByUrl('/admin/dashboard');
-        // }
       } else {
         this.showError = 'Login Failed!';
       }

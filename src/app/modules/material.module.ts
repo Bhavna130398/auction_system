@@ -39,7 +39,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatCardModule } from '@angular/material';
 
-
 @NgModule({
   declarations: [],
   imports: [
