@@ -8,14 +8,9 @@ import { Observable } from 'rxjs';
 export class AuctionerGuard implements CanActivate {
   constructor(private router: Router) { }
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (localStorage.getItem('key') == null) {
-      this.router.navigate(['login']);
-      return false;
-    } else if (localStorage.getItem('role') == 'auctioner') {
-      console.log(localStorage.getItem('role'));
+  canActivate() {
+    // if (localStorage.getItem('role') == 'auctioner' && localStorage.getItem('key') != null) {
+    if (localStorage.getItem('key') != null) {
       return true;
     } else {
       localStorage.removeItem('key');

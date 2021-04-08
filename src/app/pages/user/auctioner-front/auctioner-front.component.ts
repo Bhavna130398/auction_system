@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CommonService } from 'src/app/providers/common.service';
 
 @Component({
@@ -9,13 +10,13 @@ import { CommonService } from 'src/app/providers/common.service';
 })
 export class AuctionerFrontComponent {
   fgAddProduct: FormGroup; showForm: boolean = false;
-  constructor(private fb: FormBuilder, private cs: CommonService) {
+  constructor(private fb: FormBuilder, private cs: CommonService, private router: Router) {
     this.fgAddProduct = this.fb.group({
       productname: ['', Validators.required],
       productimage: ['', Validators.required],
-      producttype: ['', Validators.required],
+      producttype: [''],
       productdiscription: ['', Validators.required],
-      productprice: ['', Validators.required],
+      productprice: [''],
     });
   }
 
@@ -44,5 +45,8 @@ export class AuctionerFrontComponent {
     // this.cs.addProduct(this.fgAddProduct.value).subscribe((res: any) => {
     //   console.log(res);
     // })
+  }
+  logout() {
+    this.cs.logout();
   }
 }
