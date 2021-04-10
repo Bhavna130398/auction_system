@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from 'src/app/providers/common.service';
 
 @Component({
   selector: 'app-biddar',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BiddarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cs: CommonService) { }
 
   ngOnInit(): void {
+    this.getBidderList();
   }
-
+  getBidderList() {
+    this.cs.getBidderList().subscribe((res: any) => {
+      console.log(res);
+    })
+  }
 }

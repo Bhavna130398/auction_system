@@ -11,7 +11,7 @@
         </div>
         <div class="mt-3">
             <mat-nav-list>
-                <a routerLink="/dashboard" routerLinkActive="active" mat-list-item class="ml-2" style="font-size:15px;">
+                <a routerLink="/admin" routerLinkActive="active" mat-list-item class="ml-2" style="font-size:15px;">
                     <mat-icon color="primary" matPrefix>tv</mat-icon>&nbsp;
                     Dashboard
                 </a>
@@ -63,7 +63,7 @@
                     </a>
                 </mat-nav-list>
                 <mat-nav-list>
-                    <a routerLink="/admin/biddar" routerLinkActive="active" mat-list-item class="ml-2"
+                    <a routerLink="/product" routerLinkActive="active" mat-list-item class="ml-2"
                         style="font-size:15px;">
                         <mat-icon color="primary" matPrefix>shopping_basket</mat-icon>&nbsp;
                         Products
@@ -103,7 +103,6 @@
                     <mat-icon color="warn" matPrefix>power_settings_new</mat-icon>&nbsp;Logout
                 </a>
             </mat-nav-list>
-
         </div>
     </mat-sidenav>
     <mat-sidenav-content class="container1">
@@ -113,13 +112,16 @@
                 <button mat-icon-button (click)="sidenav.toggle()" fxShow.sm="true" fxShow.gt-sm="false">
                     <mat-icon>menu</mat-icon>
                 </button>
+                <button mat-button>Auctioner</button>
+                <button mat-button>Bidder</button>
+                <button mat-button>Product</button>
                 <span class="example-spacer"></span>
                 <mat-icon class="example-icon" aria-hidden="false" aria-label="Admin">account_circle
                 </mat-icon>
             </mat-toolbar-row>
         </mat-toolbar>
-        <!-- <router-outlet></router-outlet> -->
-        <app-auctioner></app-auctioner>
+        <router-outlet></router-outlet>
+        <!-- <app-auctioner></app-auctioner> -->
         <!-- <app-biddar></app-biddar> -->
     </mat-sidenav-content>
 </mat-sidenav-container>

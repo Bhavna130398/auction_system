@@ -10,30 +10,48 @@ import { CommonService } from 'src/app/providers/common.service';
 })
 export class AuctionerFrontComponent {
   fgAddProduct: FormGroup; showForm: boolean = false;
+  private base64textString: String = "";
   constructor(private fb: FormBuilder, private cs: CommonService, private router: Router) {
     this.fgAddProduct = this.fb.group({
       productname: ['', Validators.required],
       productimage: ['', Validators.required],
-      producttype: [''],
+      producttype: ['', Validators.required],
       productdiscription: ['', Validators.required],
-      productprice: [''],
+      productprice: ['', Validators.required],
     });
   }
 
   // ngOnInit(): void {
   // }
   getBase64(event) {
-    let me = this;
-    let file = event.target.files[0];
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function () {
-      console.log(reader.result);
-    };
-    reader.onerror = function (error) {
-      console.log('Error: ', error);
-    };
+    console.log(event);
+    // let me = this;
+    // let file = event.target.files[0];
+    // let reader = new FileReader();
+    // reader.readAsDataURL(file);
+    // reader.onload = function () {
+    //   console.log(reader.result);
+    // };
+    // reader.onerror = function (error) {
+    //   console.log('Error: ', error);
+    // };
   }
+  handleFileSelect(evt) {
+    var files = evt.target.files;
+    var file = files[0];
+    if (files && file) {
+      var reader = new FileReader();
+      reader.onload = this._handleReaderLoaded.bind(this);
+      reader.readAsBinaryString(file);
+    }
+  }
+  _handleReaderLoaded(readerEvt) {
+    var binaryString = readerEvt.target.result;
+    this.base64textString = btoa(binaryString);
+    this.fgAddProduct.value.productimage = this.base64textString;
+    // console.log(btoa(binaryString));
+  }
+
   addProduct() {
     this.showForm = true;
   }
@@ -41,10 +59,9 @@ export class AuctionerFrontComponent {
     this.showForm = false;
   }
   onSubmit() {
-    this.getBase64(this.fgAddProduct.value.productimage);
-    // this.cs.addProduct(this.fgAddProduct.value).subscribe((res: any) => {
-    //   console.log(res);
-    // })
+    this.cs.addProduct(this.fgAddProduct.value).subscribe((res: any) => {
+      console.log(res);
+    })
   }
   logout() {
     this.cs.logout();

@@ -4,5 +4,5 @@
 // 192.168.43.247
 export const environment = {
   production: false,
-  ApiUrl: 'http://localhost:3000/users/'
+  ApiUrl: 'http://localhost:3000/'
 };

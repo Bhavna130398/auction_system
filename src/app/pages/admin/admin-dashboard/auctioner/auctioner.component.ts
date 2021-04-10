@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { CommonService } from 'src/app/providers/common.service';
 
 export interface UserData {
   id: string;
@@ -28,7 +29,7 @@ export class AuctionerComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor() {
+  constructor(private cs: CommonService) {
     // Create 100 users
     const users = Array.from({ length: 100 }, (_, k) => createNewUser(k + 1));
 
@@ -39,8 +40,15 @@ export class AuctionerComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.getAuctionerList();
   }
 
+  getAuctionerList() {
+    console.log('1');
+    this.cs.getAuctionerList().subscribe((res: any) => {
+      console.log(res);
+    });
+  }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 

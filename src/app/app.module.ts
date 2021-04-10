@@ -10,8 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material.module';
-import { BiddarComponent } from './pages/admin/biddar/biddar.component';
-import { AuctionerComponent } from './pages/admin/auctioner/auctioner.component';
+import { BiddarComponent } from './pages/admin/admin-dashboard/biddar/biddar.component';
+import { AuctionerComponent } from './pages/admin/admin-dashboard/auctioner/auctioner.component';
 import { AuctionerFrontComponent } from './pages/user/auctioner-front/auctioner-front.component';
 import { BiddarFrontComponent } from './pages/user/biddar-front/biddar-front.component';
 import { ProductComponent } from './pages/user/product/product.component'

@@ -9,7 +9,6 @@ export class AuctionerGuard implements CanActivate {
   constructor(private router: Router) { }
 
   canActivate() {
-    // if (localStorage.getItem('role') == 'auctioner' && localStorage.getItem('key') != null) {
     if (localStorage.getItem('key') != null) {
       return true;
     } else {
