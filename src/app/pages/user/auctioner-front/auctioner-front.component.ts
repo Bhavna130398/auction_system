@@ -14,7 +14,7 @@ export class AuctionerFrontComponent {
   constructor(private fb: FormBuilder, private cs: CommonService, private router: Router) {
     this.fgAddProduct = this.fb.group({
       productname: ['', Validators.required],
-      productimage: ['', Validators.required],
+      image: ['', Validators.required],
       producttype: ['', Validators.required],
       productdiscription: ['', Validators.required],
       productprice: ['', Validators.required],
@@ -48,16 +48,12 @@ export class AuctionerFrontComponent {
   _handleReaderLoaded(readerEvt) {
     var binaryString = readerEvt.target.result;
     this.base64textString = btoa(binaryString);
-    this.fgAddProduct.value.productimage = this.base64textString;
-    // console.log(btoa(binaryString));
+    this.fgAddProduct.controls['image'].setValue(this.base64textString);
   }
 
-  addProduct() {
-    this.showForm = true;
-  }
-  showProducts() {
-    this.showForm = false;
-  }
+  addProduct() { this.showForm = true; }
+  showProducts() { this.showForm = false; }
+
   onSubmit() {
     this.cs.addProduct(this.fgAddProduct.value).subscribe((res: any) => {
       console.log(res);

@@ -44,9 +44,10 @@ export class AuctionerComponent implements OnInit {
   }
 
   getAuctionerList() {
-    this.cs.getAuctionerList().subscribe((res: any) => {
+    var role = "auctionar";
+    this.cs.getList(role).subscribe((res: any) => {
       console.log(res);
-    });
+    })
   }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();

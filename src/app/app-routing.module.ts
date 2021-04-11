@@ -7,7 +7,6 @@ import { AuctionerFrontComponent } from './pages/user/auctioner-front/auctioner-
 import { BiddarFrontComponent } from './pages/user/biddar-front/biddar-front.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { ProductComponent } from './pages/user/product/product.component';
 import { AuthGuard } from './guard/auth.guard';
 import { AuctionerGuard } from './guard/auctioner.guard';
 import { BidderGuard } from './guard/bidder.guard';
@@ -17,19 +16,13 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   {
-    path: 'admin', canActivate: [AuthGuard],
+    path: 'admin', canActivate: [AuthGuard], component: AdminDashboardComponent,
     children: [
       { path: '', component: AdminDashboardComponent },
       { path: 'biddar', component: BiddarComponent },
       { path: 'auctioner', component: AuctionerComponent },
     ]
   },
-  { path: 'product', component: ProductComponent },
-
-  // { path: 'admin/dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard] },
-  // { path: 'admin/biddar', component: BiddarComponent, canActivate: [AuthGuard] },
-  // { path: 'admin/auctioner', component: AuctionerComponent, canActivate: [AuthGuard] },
-
   { path: 'user/auctioner', component: AuctionerFrontComponent, canActivate: [AuctionerGuard] },
   { path: 'user/biddar', component: BiddarFrontComponent, canActivate: [BidderGuard] },
 

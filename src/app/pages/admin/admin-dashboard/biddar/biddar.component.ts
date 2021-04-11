@@ -14,7 +14,8 @@ export class BiddarComponent implements OnInit {
     this.getBidderList();
   }
   getBidderList() {
-    this.cs.getBidderList().subscribe((res: any) => {
+    var role = "bidder";
+    this.cs.getList(role).subscribe((res: any) => {
       console.log(res);
     })
   }

@@ -20,12 +20,13 @@ export class CommonService {
   addProduct(data: any) {
     return this.http.post(environment.ApiUrl + 'product/addProduct', data);
   }
-  getBidderList() {
-    return this.http.get(environment.ApiUrl + 'admin/bidderList');
+  getList(role: any) {
+    console.log(role);
+    return this.http.post(environment.ApiUrl + 'admin/list', { role: role });
   }
-  getAuctionerList() {
-    return this.http.get(environment.ApiUrl + 'admin/sellerList');
-  }
+  // getAuctionerList() {
+  //   return this.http.post(environment.ApiUrl + 'admin/sellerList', '');
+  // }
   logout() {
     localStorage.removeItem('role');
     localStorage.removeItem('key');
