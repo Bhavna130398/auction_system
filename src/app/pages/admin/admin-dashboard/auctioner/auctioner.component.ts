@@ -44,7 +44,6 @@ export class AuctionerComponent implements OnInit {
   }
 
   getAuctionerList() {
-    console.log('1');
     this.cs.getAuctionerList().subscribe((res: any) => {
       console.log(res);
     });
