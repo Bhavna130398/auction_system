@@ -1,52 +1,45 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource, MAT_DIALOG_DATA } from '@angular/material';
+import { DialogComponent } from 'src/app/dialog/dialog.component';
+import { User } from 'src/app/models/user';
 import { CommonService } from 'src/app/providers/common.service';
 
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
-}
-/** Constants used to fill up our data base. */
-const COLORS: string[] = [
-  'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsia', 'lime', 'teal',
-  'aqua', 'blue', 'navy', 'black', 'gray'
-];
-const NAMES: string[] = [
-  'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
-];
 @Component({
   selector: 'app-auctioner',
   templateUrl: './auctioner.component.html',
   styleUrls: ['./auctioner.component.css']
 })
 export class AuctionerComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'progress', 'color'];
-  dataSource: MatTableDataSource<UserData>;
+  userData: User[];
+  displayedColumns: string[] = ['id', 'name', 'email', 'gender', 'mobileNumber', 'DOB', 'address', 'action'];
+  dataSource: MatTableDataSource<User>;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private cs: CommonService) {
-    // Create 100 users
-    const users = Array.from({ length: 100 }, (_, k) => createNewUser(k + 1));
-
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
-  }
+  constructor(private cs: CommonService, private dialog: MatDialog,) { }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
     this.getAuctionerList();
   }
 
   getAuctionerList() {
     var role = "auctionar";
     this.cs.getList(role).subscribe((res: any) => {
-      console.log(res);
+      this.userData = res;
+      this.dataSource = new MatTableDataSource(this.userData);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    })
+  }
+
+  opendialog(row): void {
+    const DialogConfig = new MatDialogConfig();
+    DialogConfig.disableClose = false;
+    DialogConfig.autoFocus = true;
+    DialogConfig.width = "40%";
+    this.dialog.open(DialogComponent, {
+      data: ({ row })
     })
   }
   applyFilter(filterValue: string) {
@@ -56,18 +49,4 @@ export class AuctionerComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-}
-
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
-
 }

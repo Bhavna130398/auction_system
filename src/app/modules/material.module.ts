@@ -2,8 +2,6 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
-
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
@@ -46,7 +44,6 @@ import { MatCardModule } from '@angular/material';
     ReactiveFormsModule,
     FormsModule,
     MatFormFieldModule,
-
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
@@ -89,7 +86,6 @@ import { MatCardModule } from '@angular/material';
     ReactiveFormsModule,
     FormsModule,
     MatFormFieldModule,
-
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
@@ -126,7 +122,6 @@ import { MatCardModule } from '@angular/material';
     MatTooltipModule,
     MatTreeModule,
     MatMenuModule
-
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

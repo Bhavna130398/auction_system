@@ -14,7 +14,8 @@ import { BiddarComponent } from './pages/admin/admin-dashboard/biddar/biddar.com
 import { AuctionerComponent } from './pages/admin/admin-dashboard/auctioner/auctioner.component';
 import { AuctionerFrontComponent } from './pages/user/auctioner-front/auctioner-front.component';
 import { BiddarFrontComponent } from './pages/user/biddar-front/biddar-front.component';
-import { ProductComponent } from './pages/user/product/product.component'
+import { ProductComponent } from './pages/user/product/product.component';
+import { DialogComponent } from './dialog/dialog.component'
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ProductComponent } from './pages/user/product/product.component'
     AuctionerComponent,
     AuctionerFrontComponent,
     BiddarFrontComponent,
-    ProductComponent
+    ProductComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

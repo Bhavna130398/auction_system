@@ -10,6 +10,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { AuthGuard } from './guard/auth.guard';
 import { AuctionerGuard } from './guard/auctioner.guard';
 import { BidderGuard } from './guard/bidder.guard';
+import { ProductComponent } from './pages/admin/admin-dashboard/product/product.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
       { path: '', component: AdminDashboardComponent },
       { path: 'biddar', component: BiddarComponent },
       { path: 'auctioner', component: AuctionerComponent },
+      { path: 'product', component: ProductComponent }
     ]
   },
   { path: 'user/auctioner', component: AuctionerFrontComponent, canActivate: [AuctionerGuard] },
