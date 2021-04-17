@@ -25,6 +25,10 @@ export class CommonService {
   getList(role: any): Observable<User[]> {
     return this.http.post<User[]>(environment.ApiUrl + 'admin/list', { role: role });
   }
+  getProduct(data: any) {
+    return this.http.post(environment.ApiUrl + 'product/listProduct', data);
+  }
+
 
   logout() {
     localStorage.removeItem('role');

@@ -21,6 +21,8 @@ export class AuctionerFrontComponent {
     });
   }
 
+
+
   // ngOnInit(): void {
   // }
   getBase64(event) {

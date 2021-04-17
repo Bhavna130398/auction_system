@@ -19,7 +19,7 @@ const routes: Routes = [
   {
     path: 'admin', canActivate: [AuthGuard], component: AdminDashboardComponent,
     children: [
-      { path: '', component: AdminDashboardComponent },
+      // { path: '', component: AdminDashboardComponent },
       { path: 'biddar', component: BiddarComponent },
       { path: 'auctioner', component: AuctionerComponent },
       { path: 'product', component: ProductComponent }

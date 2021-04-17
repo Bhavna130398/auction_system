@@ -1,1 +1,5 @@
-<p>product works!</p>
+<div fxLayout="row wrap" fxLayoutAlign="center center">
+    <app-shaerd-product fxFlex.lg="24" fxFlex.md="24" fxFlex.sm="33" fxFlex.xs="48" *ngFor="let p of product"
+        [product]="p">
+    </app-shaerd-product>
+</div>
