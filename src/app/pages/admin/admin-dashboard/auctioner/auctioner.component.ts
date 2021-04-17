@@ -15,9 +15,13 @@ export class AuctionerComponent implements OnInit {
   dataSource: MatTableDataSource<User>;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatSort, { static: true }) sort: MatSort; isApproved: any;
 
-  constructor(private cs: CommonService, private dialog: MatDialog,) { }
+  constructor(private cs: CommonService, private dialog: MatDialog,) {
+    if (localStorage.getItem('isApproved') == 'true') {
+      this.isApproved = true;
+    } else { this.isApproved = true; }
+  }
 
   ngOnInit() {
     this.getAuctionerList();
@@ -44,7 +48,6 @@ export class AuctionerComponent implements OnInit {
   }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }

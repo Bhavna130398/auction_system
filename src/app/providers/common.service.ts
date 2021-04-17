@@ -15,7 +15,6 @@ export class CommonService {
   loginUser(data: any) {
     return this.http.post(environment.ApiUrl + 'users/login', data);
   }
-
   registerUser(data: any) {
     return this.http.post(environment.ApiUrl + 'users/register', data);
   }
@@ -25,7 +24,9 @@ export class CommonService {
   getList(role: any): Observable<User[]> {
     return this.http.post<User[]>(environment.ApiUrl + 'admin/list', { role: role });
   }
-
+  verifyUser(data: any) {
+    return this.http.post(environment.ApiUrl + 'admin/update', data);
+  }
   logout() {
     localStorage.removeItem('role');
     localStorage.removeItem('key');

@@ -70,7 +70,6 @@
                         Products
                     </a>
                 </mat-nav-list>
-
                 <!-- <mat-expansion-panel class="no-shadow my-0">
                     <mat-expansion-panel-header fxLayout="row" [expandedHeight]="expandHeight"
                         [collapsedHeight]="collapseHeight">
@@ -113,17 +112,46 @@
                 <button mat-icon-button (click)="sidenav.toggle()" fxShow.sm="true" fxShow.gt-sm="false">
                     <mat-icon>menu</mat-icon>
                 </button>
-                <!-- <button mat-button>Auctioner</button>
-                <button mat-button>Bidder</button>
-                <button mat-button>Product</button> -->
                 <span class="example-spacer"></span>
-                <mat-icon class="example-icon" aria-hidden="false" aria-label="Admin">account_circle
-                </mat-icon>
+                <button mat-icon-button (click)="showAdmin()">
+                    <mat-icon class="example-icon" aria-hidden="false" aria-label="Admin">
+                        account_circle
+                    </mat-icon>
+                </button>
             </mat-toolbar-row>
         </mat-toolbar>
+        <div class="showAdmin" *ngIf="showadmin">
+            <mat-card>
+                <button mat-icon-button (click)="hideForm()" fxLayoutAlign="end" style="margin-left: 90%;">
+                    <mat-icon>close</mat-icon>
+                </button>
+                <div class="example-container">
+                    <mat-form-field>
+                        <input matInput placeholder="Input" value="{{userData.name}}" readonly>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Input" value="{{userData.address}}" readonly>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Input" value="{{userData.email}}" readonly>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Input" value="{{userData.gender}}" readonly>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Input" value="{{userData.mobileNumber}}" readonly>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Input" value="{{userData.username}}" readonly>
+                    </mat-form-field>
+                </div>
+            </mat-card>
+        </div>
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
+
+
 
 
 <!-- <div class="conatiner">

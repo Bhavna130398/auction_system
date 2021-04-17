@@ -81,4 +81,16 @@
   .container1>button{
     color: white;
   }
+mat-card{
+  /* padding: 10px; */
+  margin: 30px;
+}
+.example-container {
+  padding: 5px 30px 5px 30px;
+  display: flex;
+  flex-direction: column;
+}
 
+.example-container > * {
+  width: 100%;
+}

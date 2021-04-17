@@ -18,8 +18,8 @@ export class AdminDashboardComponent implements OnInit {
   // overlap = false;
   state: string = 'default';
   watcher: Subscription;
-
-
+  showadmin: boolean = false;
+  userData: any = [];
   constructor(media: MediaObserver, private router: Router, private fb: FormBuilder) {
     this.watcher = media.media$.subscribe((change: MediaChange) => {
       if (change.mqAlias === 'sm' || change.mqAlias === 'xs') {
@@ -40,6 +40,9 @@ export class AdminDashboardComponent implements OnInit {
   }
   logout() {
     sessionStorage.clear();
+    localStorage.removeItem('role');
+    localStorage.removeItem('key');
+    localStorage.removeItem('userData');
     this.router.navigateByUrl('/login');
   }
 
@@ -50,7 +53,11 @@ export class AdminDashboardComponent implements OnInit {
     //   console.log(resp);  
     // })
   }
-
-
-
+  showAdmin() {
+    this.showadmin = true;
+    this.userData.push(localStorage.getItem('userData'));
+    this.userData = JSON.parse(this.userData);
+    console.log(this.userData)
+  }
+  hideForm() { this.showadmin = false; }
 }

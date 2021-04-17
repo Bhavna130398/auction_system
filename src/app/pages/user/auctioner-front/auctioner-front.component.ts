@@ -21,21 +21,6 @@ export class AuctionerFrontComponent {
     });
   }
 
-  // ngOnInit(): void {
-  // }
-  getBase64(event) {
-    console.log(event);
-    // let me = this;
-    // let file = event.target.files[0];
-    // let reader = new FileReader();
-    // reader.readAsDataURL(file);
-    // reader.onload = function () {
-    //   console.log(reader.result);
-    // };
-    // reader.onerror = function (error) {
-    //   console.log('Error: ', error);
-    // };
-  }
   handleFileSelect(evt) {
     var files = evt.target.files;
     var file = files[0];

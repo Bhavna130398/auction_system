@@ -19,7 +19,6 @@ const routes: Routes = [
   {
     path: 'admin', canActivate: [AuthGuard], component: AdminDashboardComponent,
     children: [
-      { path: '', component: AdminDashboardComponent },
       { path: 'biddar', component: BiddarComponent },
       { path: 'auctioner', component: AuctionerComponent },
       { path: 'product', component: ProductComponent }
@@ -27,7 +26,6 @@ const routes: Routes = [
   },
   { path: 'user/auctioner', component: AuctionerFrontComponent, canActivate: [AuctionerGuard] },
   { path: 'user/biddar', component: BiddarFrontComponent, canActivate: [BidderGuard] },
-
 ];
 
 @NgModule({

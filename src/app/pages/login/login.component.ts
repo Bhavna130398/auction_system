@@ -26,10 +26,13 @@ export class LoginComponent implements OnInit {
       if (res.length != 0) {
         if (res.role == 'auctionar') {
           this.router.navigate(['/user/auctioner']);
+          localStorage.setItem('userData', JSON.stringify(res));
         } else if (res.role == 'bidder') {
           this.router.navigateByUrl('/user/biddar');
+          localStorage.setItem('userData', JSON.stringify(res));
         } else {
           this.router.navigateByUrl('/admin');
+          localStorage.setItem('userData', JSON.stringify(res));
         }
         localStorage.setItem('key', res._id);
         localStorage.setItem('role', res.role);
@@ -37,9 +40,6 @@ export class LoginComponent implements OnInit {
         this.showError = 'Login Failed!';
       }
     })
-    // if (this.fgLogin.value.userName === 'admin' && this.fgLogin.value.password === 'admin') {
-    //   this.router.navigateByUrl('/admin-dashboard');
-    // }
   }
 
 
