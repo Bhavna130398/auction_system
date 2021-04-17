@@ -27,6 +27,11 @@ export class CommonService {
   verifyUser(data: any) {
     return this.http.post(environment.ApiUrl + 'admin/update', data);
   }
+  getProduct(data: any) {
+    return this.http.post(environment.ApiUrl + 'product/listProduct', data);
+  }
+
+
   logout() {
     localStorage.removeItem('role');
     localStorage.removeItem('key');

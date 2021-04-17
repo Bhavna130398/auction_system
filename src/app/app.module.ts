@@ -1,20 +1,23 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-
+import { BrowserModule, } from '@angular/platform-browser';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http'
+import { MaterialModule } from './modules/material.module';
+
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './modules/material.module';
 import { BiddarComponent } from './pages/admin/admin-dashboard/biddar/biddar.component';
 import { AuctionerComponent } from './pages/admin/admin-dashboard/auctioner/auctioner.component';
 import { AuctionerFrontComponent } from './pages/user/auctioner-front/auctioner-front.component';
 import { BiddarFrontComponent } from './pages/user/biddar-front/biddar-front.component';
-import { ProductComponent } from './pages/user/product/product.component';
+import { ProductComponent } from './pages/admin/admin-dashboard/product/product.component';
+import { ShaerdProductComponent } from './pages/shared/product/product.component';
 import { DialogComponent } from './dialog/dialog.component'
 
 
@@ -29,16 +32,18 @@ import { DialogComponent } from './dialog/dialog.component'
     AuctionerFrontComponent,
     BiddarFrontComponent,
     ProductComponent,
-    DialogComponent
+    DialogComponent,
+    ShaerdProductComponent
   ],
   imports: [
     BrowserModule,
+    MaterialModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    MaterialModule
+    FlexLayoutModule
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
