@@ -8,7 +8,8 @@
         <table mat-table [dataSource]="dataSource" matSort>
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                <!-- <td mat-cell *matCellDef="let row" ; let i=index;> {{row.id}} </td> -->
+                <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
             </ng-container>
 
             <ng-container matColumnDef="name">
@@ -45,10 +46,12 @@
             <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
                 <td mat-cell *matCellDef="let row">
-                    <mat-icon color="primary" matPrefix (click)="opendialog(row)" *ngIf="!isApproved">done_all
+                    <mat-icon color="primary" matPrefix (click)="opendialog(row, 'approve')">
+                        done_all
                     </mat-icon>
-                    {{row.action}}
-                    <mat-icon color="primary" matPrefix (click)="opendialog(row)" *ngIf="isApproved">close</mat-icon>
+                    {{row.action}} &nbsp;&nbsp;
+                    <mat-icon color="primary" matPrefix (click)="opendialog(row, 'disapprove')">close
+                    </mat-icon>
                     {{row.action}}
                 </td>
             </ng-container>

@@ -37,13 +37,13 @@ export class AuctionerComponent implements OnInit {
     })
   }
 
-  opendialog(row): void {
+  opendialog(row, action): void {
     const DialogConfig = new MatDialogConfig();
     DialogConfig.disableClose = false;
     DialogConfig.autoFocus = true;
     DialogConfig.width = "40%";
     this.dialog.open(DialogComponent, {
-      data: ({ row })
+      data: ({ row, action })
     })
   }
   applyFilter(filterValue: string) {

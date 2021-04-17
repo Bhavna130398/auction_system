@@ -8,21 +8,28 @@ import { CommonService } from '../providers/common.service';
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent implements OnInit {
-  rowdata: any = []; isApproved: any;
+  rowdata: any = []; isApproved: any; message: any;
   constructor(private dialog: MatDialog, @Inject(MAT_DIALOG_DATA) public data: any, private cs: CommonService) {
   }
 
   ngOnInit(): void {
     console.log(this.data.row.name);
-    // console.log(this.data);
+    if (this.data.action == 'approve') {
+      this.message = 'Do you want to approve';
+    } else this.message = 'Do you want to disapprove';
   }
+
   onNoClick(): void {
     this.dialog.closeAll();
   }
-  verifyUser() {
+  verifyUser(action: any) {
+    let isVerified;
+    if (action == 'cancel') {
+      isVerified = false;
+    } else isVerified = false;
     let data = {
       _id: this.data.row._id,
-      isVerified: true
+      isVerified: isVerified
     }
     this.cs.verifyUser(data).subscribe((res: any) => {
       if (res) {
