@@ -9,7 +9,7 @@ import { CommonService } from 'src/app/providers/common.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  fgRegister: FormGroup;
+  fgRegister: FormGroup; hide = true;
   constructor(private fb: FormBuilder, private cs: CommonService, private router: Router) {
     this.fgRegister = this.fb.group({
       name: ['', Validators.required],

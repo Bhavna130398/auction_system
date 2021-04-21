@@ -30,14 +30,9 @@ export class AdminDashboardComponent implements OnInit {
         this.over = 'side';
       }
     });
-    // this.fgpending= this.fb.group({
-    //   days: ['']
-    // })
   }
 
-  ngOnInit() {
-    // this.user = JSON.parse(sessionStorage.getItem('user'));
-  }
+  ngOnInit() { }
   logout() {
     sessionStorage.clear();
     localStorage.removeItem('role');
@@ -46,13 +41,6 @@ export class AdminDashboardComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
 
-  submit(id: number) {
-    // console.log(id)
-    this.router.navigate(['/dashboard/pending' + '/' + id]);
-    //   this.cs.get_pending_report(id).subscribe((resp:any)=>{
-    //   console.log(resp);  
-    // })
-  }
   showAdmin() {
     this.showadmin = true;
     this.userData.push(localStorage.getItem('userData'));

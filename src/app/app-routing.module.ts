@@ -26,6 +26,7 @@ const routes: Routes = [
   },
   { path: 'user/auctioner', component: AuctionerFrontComponent, canActivate: [AuctionerGuard] },
   { path: 'user/biddar', component: BiddarFrontComponent, canActivate: [BidderGuard] },
+
 ];
 
 @NgModule({

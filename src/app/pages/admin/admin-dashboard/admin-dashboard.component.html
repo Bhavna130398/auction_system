@@ -147,7 +147,7 @@
                 </div>
             </mat-card>
         </div>
-        <router-outlet></router-outlet>
+        <router-outlet *ngIf="!showadmin"></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
 

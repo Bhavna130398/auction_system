@@ -30,7 +30,9 @@ export class CommonService {
   getProduct(data: any) {
     return this.http.post(environment.ApiUrl + 'product/listProduct', data);
   }
-
+  drop(data: any) {
+    return this.http.post(environment.ApiUrl + 'admin/tableDrop', { tableName: data });
+  }
 
   logout() {
     localStorage.removeItem('role');

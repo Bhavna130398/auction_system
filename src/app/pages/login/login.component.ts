@@ -9,7 +9,7 @@ import { CommonService } from 'src/app/providers/common.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  fgLogin: FormGroup; showError: string = '';
+  fgLogin: FormGroup; showError: string = ''; hide = true;
   constructor(private fb: FormBuilder, private cs: CommonService, private router: Router) {
     this.fgLogin = this.fb.group({
       username: ['', Validators.required],
@@ -17,14 +17,12 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   submit() {
     this.cs.loginUser(this.fgLogin.value).subscribe((res: any) => {
       if (res.length != 0) {
-        if (res.role == 'auctionar') {
+        if (res.role == 'auctioner') {
           this.router.navigate(['/user/auctioner']);
           localStorage.setItem('userData', JSON.stringify(res));
         } else if (res.role == 'bidder') {

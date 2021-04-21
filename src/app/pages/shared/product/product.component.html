@@ -1,22 +1,18 @@
 <mat-card matRipple>
     <mat-card-header>
+        <mat-card-title>{{product.productname}}</mat-card-title>
     </mat-card-header>
-    <!-- *ngIf="user.dp==null" -->
-    <!-- <img class="circle" width="100%" src="assets/no-image.svg"> -->
     <img class="circle" width="100%" src="http://localhost:3000/images/{{product._id}}.jpeg"
         onError="this.src='assets/no-image.svg';">
-    <div>
-
-    </div>
-    <div class="footer" style="position:relative;">
-        {{product.productname}}
-        <div class="top-right">
-            {{product.productprice}}
-            <span>
-                <mat-icon color="primary">videocam</mat-icon>
-            </span>
-        </div>
-        <!-- <mat-card-subtitle></mat-card-subtitle> -->
-        <mat-card-subtitle>{{product.productdiscription}}</mat-card-subtitle>
-    </div>
+    <mat-card-content class="footer" style="position:relative;">
+        <mat-card-subtitle>
+            <p>{{product.productdiscription}}</p>
+        </mat-card-subtitle>
+    </mat-card-content>
+    <mat-card-actions style="padding: 10px;">
+        <mat-chip-list fxLayoutAlign="center center">
+            <mat-chip color="primary" selected>${{product.productprice}} </mat-chip>
+            <mat-chip color="accent" selected>Want to bid</mat-chip>
+        </mat-chip-list>
+    </mat-card-actions>
 </mat-card>

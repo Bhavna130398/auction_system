@@ -37,7 +37,7 @@ export class AuctionerFrontComponent {
   }
 
   addProduct() { this.showForm = true; }
-  showProducts() { this.showForm = false; }
+  showProducts() { this.showForm = false; this.router.navigateByUrl('/pr') }
 
   onSubmit() {
     this.cs.addProduct(this.fgAddProduct.value).subscribe((res: any) => {

@@ -7,8 +7,8 @@ import { CommonService } from 'src/app/providers/common.service';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  role
-  key
+  role: any;
+  key: any
   product: any = [];
   constructor(private cs: CommonService) {
     this.role = localStorage.getItem('role')
@@ -20,7 +20,6 @@ export class ProductComponent implements OnInit {
     this.cs.getProduct(postdata).subscribe((res: any) => {
       console.log(res);
       this.product = res;
-
     })
   }
 

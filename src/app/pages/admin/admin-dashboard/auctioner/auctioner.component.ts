@@ -25,16 +25,24 @@ export class AuctionerComponent implements OnInit {
 
   ngOnInit() {
     this.getAuctionerList();
+    // this.dropTable();
   }
 
+
   getAuctionerList() {
-    var role = "auctionar";
+    var role = "auctioner";
     this.cs.getList(role).subscribe((res: any) => {
       this.userData = res;
       this.dataSource = new MatTableDataSource(this.userData);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })
+  }
+
+  dropTable() {
+    // this.cs.drop('product1').subscribe((res: any) => {
+    //   console.log(res);
+    // });
   }
 
   opendialog(row, action): void {

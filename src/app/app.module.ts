@@ -1,4 +1,5 @@
 import { BrowserModule, } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -17,9 +18,8 @@ import { AuctionerComponent } from './pages/admin/admin-dashboard/auctioner/auct
 import { AuctionerFrontComponent } from './pages/user/auctioner-front/auctioner-front.component';
 import { BiddarFrontComponent } from './pages/user/biddar-front/biddar-front.component';
 import { ProductComponent } from './pages/admin/admin-dashboard/product/product.component';
-import { ShaerdProductComponent } from './pages/shared/product/product.component';
+import { SharedProductComponent } from './pages/shared/product/product.component';
 import { DialogComponent } from './dialog/dialog.component'
-
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { DialogComponent } from './dialog/dialog.component'
     BiddarFrontComponent,
     ProductComponent,
     DialogComponent,
-    ShaerdProductComponent
+    SharedProductComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +43,8 @@ import { DialogComponent } from './dialog/dialog.component'
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    CommonModule
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
