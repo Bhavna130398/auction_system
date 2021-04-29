@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/providers/common.service';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  selector: 'product-front',
+  templateUrl: './product-front.component.html',
+  styleUrls: ['./product-front.component.css']
 })
-export class ProductComponent implements OnInit {
+export class ProductFrontComponent implements OnInit {
   role: any;
   key: any
   product: any = [];
@@ -20,13 +20,12 @@ export class ProductComponent implements OnInit {
     this.cs.getProduct(postdata).subscribe((res: any) => {
       if (res) {
         this.product = res;
-        if (localStorage.getItem('role') == 'admin') {
-          localStorage.setItem('comeFrom', 'admin');
+        if (localStorage.getItem('role') == 'auctioner') {
+          localStorage.setItem('comeFrom', 'auctioner');
         }
       } else {
         this.cs.alert('Error', 'No data found!');
       }
     })
   }
-
 }

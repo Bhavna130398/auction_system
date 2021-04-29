@@ -4,13 +4,14 @@ import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommonService {
 
-  constructor(public http: HttpClient, private router: Router) { }
+  constructor(public http: HttpClient, private router: Router, private _snackBar: MatSnackBar) { }
 
   loginUser(data: any) {
     return this.http.post(environment.ApiUrl + 'users/login', data);
@@ -37,6 +38,17 @@ export class CommonService {
   logout() {
     localStorage.removeItem('role');
     localStorage.removeItem('key');
+    localStorage.removeItem('userData');
+    localStorage.removeItem('comeFrom');
     this.router.navigate(['/login']);
+  }
+
+  alert(type: string, messege: string, action?: string, timeout?: number) {
+    action = action == null ? 'Ok' : action;
+    timeout = timeout == null ? 5000 : timeout;
+
+    this._snackBar.open(messege, action, {
+      duration: timeout,
+    });
   }
 }

@@ -4,7 +4,7 @@
 </div>
 <div mat-dialog-actions>
     <span class="example-spacer"></span>
-    <button mat-raised-button (click)="onNoClick()" color="warn" (click)="verifyUser('cancel')">Cancel</button>
+    <button mat-raised-button (click)="onNoClick()" color="warn" (click)="onNoClick()">Cancel</button>
     <button mat-raised-button [mat-dialog-close]="" cdkFocusInitial (click)="verifyUser('confirm')"
         style="background-color:  #22bb33;">Confirm</button>
 </div>

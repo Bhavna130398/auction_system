@@ -28,7 +28,8 @@
                     <mat-error
                         *ngIf="fgRegister.controls['name'].invalid && (fgRegister.controls['name'].dirty || fgRegister.controls['name'].touched)"
                         class="alert" style="margin: 0px !important;padding: 0px;">
-                        <mat-error *ngIf="fgRegister.controls['name'].errors.required">
+                        <mat-error
+                            *ngIf="fgRegister.controls['name'].errors ? fgRegister.controls['name'].errors.required : '' ">
                             Name is required!
                         </mat-error>
                     </mat-error>
@@ -43,7 +44,8 @@
                     <mat-error
                         *ngIf="fgRegister.controls['role'].invalid && (fgRegister.controls['role'].dirty || fgRegister.controls['role'].touched)"
                         class="alert" style="margin: 0px !important;padding: 0px;">
-                        <mat-error *ngIf="fgRegister.controls['role'].errors.required">
+                        <mat-error
+                            *ngIf="fgRegister.controls['role'].errors ? fgRegister.controls['role'].errors.required : ''">
                             Role is required!
                         </mat-error>
                     </mat-error>
@@ -56,7 +58,8 @@
                     <mat-error
                         *ngIf="fgRegister.controls['password'].invalid && (fgRegister.controls['password'].dirty || fgRegister.controls['password'].touched)"
                         class="alert" style="margin: 0px !important;padding: 0px;">
-                        <mat-error *ngIf="fgRegister.controls['password'].errors.required">
+                        <mat-error
+                            *ngIf="fgRegister.controls['password'].errors ? fgRegister.controls['password'].errors.required : '' ">
                             Password is required!
                         </mat-error>
                     </mat-error>
@@ -67,7 +70,8 @@
                     <mat-error
                         *ngIf="fgRegister.controls['username'].invalid && (fgRegister.controls['username'].dirty || fgRegister.controls['username'].touched)"
                         class="alert" style="margin: 0px !important;padding: 0px;">
-                        <mat-error *ngIf="fgRegister.controls['username'].errors.required">
+                        <mat-error
+                            *ngIf="fgRegister.controls['username'].errors ?fgRegister.controls['username'].errors.required : '' ">
                             Username is required!
                         </mat-error>
                     </mat-error>
@@ -79,7 +83,8 @@
                     <mat-error
                         *ngIf="fgRegister.controls['email'].invalid && (fgRegister.controls['email'].dirty || fgRegister.controls['email'].touched)"
                         class="alert" style="margin: 0px !important;padding: 0px;">
-                        <mat-error *ngIf="fgRegister.controls['email'].errors.required">
+                        <mat-error
+                            *ngIf="fgRegister.controls['email'].errors ? fgRegister.controls['email'].errors.required : '' ">
                             Email is required!
                         </mat-error>
                     </mat-error>
@@ -90,7 +95,8 @@
                     <mat-error
                         *ngIf="fgRegister.controls['address'].invalid && (fgRegister.controls['address'].dirty || fgRegister.controls['address'].touched)"
                         class="alert" style="margin: 0px !important;padding: 0px;">
-                        <mat-error *ngIf="fgRegister.controls['address'].errors.required">
+                        <mat-error
+                            *ngIf="fgRegister.controls['address'].errors ? fgRegister.controls['address'].errors.required : '' ">
                             Address is required!
                         </mat-error>
                     </mat-error>
@@ -103,7 +109,8 @@
                     <mat-error
                         *ngIf="fgRegister.controls['gender'].invalid && (fgRegister.controls['gender'].dirty || fgRegister.controls['gender'].touched)"
                         class="alert" style="margin: 0px !important;padding: 0px;">
-                        <mat-error *ngIf="fgRegister.controls['gender'].errors.required">
+                        <mat-error
+                            *ngIf="fgRegister.controls['gender'].errors ? fgRegister.controls['gender'].errors.required : '' ">
                             Gender is required!
                         </mat-error>
                     </mat-error>
@@ -116,7 +123,8 @@
                     <mat-error
                         *ngIf="fgRegister.controls['DOB'].invalid && (fgRegister.controls['DOB'].dirty || fgRegister.controls['DOB'].touched)"
                         class="alert" style="margin: 0px !important;padding: 0px;">
-                        <mat-error *ngIf="fgRegister.controls['DOB'].errors.required">
+                        <mat-error
+                            *ngIf="fgRegister.controls['DOB'].errors ? fgRegister.controls['DOB'].errors.required : '' ">
                             Birth Date is required!
                         </mat-error>
                     </mat-error>
@@ -129,7 +137,8 @@
                     <mat-error
                         *ngIf="fgRegister.controls['mobileNumber'].invalid && (fgRegister.controls['mobileNumber'].dirty || fgRegister.controls['mobileNumber'].touched)"
                         class="alert" style="margin: 0px !important;padding: 0px;">
-                        <mat-error *ngIf="fgRegister.controls['mobileNumber'].errors.required">
+                        <mat-error
+                            *ngIf="fgRegister.controls['mobileNumber'].errors ? fgRegister.controls['mobileNumber'].errors.required: '' ">
                             Mobile number is required!
                         </mat-error>
                     </mat-error>
@@ -143,81 +152,3 @@
         </mat-card-content>
     </mat-card>
 </div>
-
-
-<!-- <div class="container col-6">
-    <div class="card">
-        <form [formGroup]="fgRegister" style="padding: 10px;">
-            <div class="form-group">
-                <label for="inputName" class="form-label">Name</label>
-                <input type="text" class="form-control" id="inputName" placeholder="Enter name" formControlName="name"
-                    required>
-            </div>
-            <div class="form-group">
-                <label for="inputEmail4" class="form-label">Email</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Enter email"
-                    formControlName="email" required>
-            </div>
-            <div class="form-group">
-                <label for="inputAddress" class="form-label">Address</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="Enter Address"
-                    formControlName="address" required>
-            </div>
-            <div class="form-group">
-                <label for="inputMobile" class="form-label">Mobile Number</label>
-                <input type="number" class="form-control" id="inputMobile" placeholder="Enter Mobile Number"
-                    formControlName="mobileNumber" required>
-            </div>
-            <div class="form-group">
-                <label for="gender" class="col-2 col-form-label">Gender</label>
-                <div>
-                    <span>
-                        <input id="female" type="radio" value="female" name="gender" formControlName="gender" required>
-                        <label for="female">&nbsp; Female</label>
-                    </span> &nbsp;
-                    <span>
-                        <input id="male" type="radio" value="male" name="gender" checked formControlName="gender"
-                            required>
-                        <label for="male">&nbsp; Male</label>
-                    </span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="example-date-input" class="col-2 col-form-label">Date</label>
-                <div class="col-12">
-                    <input class="form-control" type="date" value="2011-08-19" id="example-date-input"
-                        formControlName="DOB">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="validationCustom04" class="form-label">Role</label>
-                <select class="form-select" aria-label="Default select example" formControlName="role">
-                    <option selected>Select Role</option>
-                    <option value="auctionar">Auctionar</option>
-                    <option value="bidder">Biddar</option>
-                </select>
-               
-                <div class="invalid-feedback">
-                    Please select a valid role.
-                </div>
-            </div>
-    
-            <div class="form-group">
-                <label for="inputUsername" class="form-label">Username</label>
-                <input type="text" class="form-control" id="inputUsername" placeholder="Enter Username"
-                    formControlName="username">
-            </div>
-            <div class="form-group">
-                <label for="inputPassword4" class="form-label">Password</label>
-                <input type="password" class="form-control" id="inputPassword4" placeholder="Enter Password"
-                    formControlName="password">
-            </div>
-            <br />
-            <div style="text-align: center;">
-                <button type="submit" class="btn btn-primary" [disabled]="!fgRegister.valid"
-                    (click)="onSubmit()">Submit</button>
-            </div>
-        </form>
-    </div>
-</div> -->

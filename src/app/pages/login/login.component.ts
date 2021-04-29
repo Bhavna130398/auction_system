@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('role', res.role);
       } else {
         this.showError = 'Login Failed!';
+        this.cs.alert('Error', 'Invalid login details!');
       }
     })
   }

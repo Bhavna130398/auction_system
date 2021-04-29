@@ -1,4 +1,4 @@
-<mat-card matRipple>
+<mat-card>
     <mat-card-header>
         <mat-card-title>{{product.productname}}</mat-card-title>
     </mat-card-header>
@@ -10,9 +10,15 @@
         </mat-card-subtitle>
     </mat-card-content>
     <mat-card-actions style="padding: 10px;">
-        <mat-chip-list fxLayoutAlign="center center">
-            <mat-chip color="primary" selected>${{product.productprice}} </mat-chip>
-            <mat-chip color="accent" selected>Want to bid</mat-chip>
+        <mat-chip-list fxLayoutAlign="center center" *ngIf="showChip == 'bidder'">
+            <mat-chip color="primary">${{product.productprice}} </mat-chip>
+            <button mat-raised-button color="accent" (click)="opendialog(product)">Want to bid</button>
+        </mat-chip-list>
+        <mat-chip-list fxLayoutAlign="center center" *ngIf="showChip == 'admin'">
+            <mat-chip color="primary">Show Details</mat-chip>
+        </mat-chip-list>
+        <mat-chip-list fxLayoutAlign="center center" *ngIf="showChip == 'auctioner'">
+            <mat-chip color="primary">Show Details</mat-chip>
         </mat-chip-list>
     </mat-card-actions>
 </mat-card>

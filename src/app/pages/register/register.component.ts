@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
       DOB: ['', Validators.required],
       mobileNumber: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
       address: ['', Validators.required],
-      isVerified: [''],
+      isVerified: ['false'],
       role: ['', Validators.required],
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -27,6 +27,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
   onSubmit() {
     this.cs.registerUser(this.fgRegister.value).subscribe((res: any) => {

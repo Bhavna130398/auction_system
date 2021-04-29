@@ -1,9 +1,8 @@
 .example-card {
-  max-width: 400px;
+  max-width: 300px;
 }
 .circle {
   object-fit: cover;
-
 }
 .mat-card{
   margin: 2px;
@@ -54,3 +53,6 @@
   top:5px;
   left: 5px;
 }
+/* mat-chip {
+  max-width: 400px;
+} */

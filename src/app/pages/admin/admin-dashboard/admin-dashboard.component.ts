@@ -9,7 +9,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent implements OnInit {
-  fgpending: FormGroup;
+  fgpending!: FormGroup;
   opened = true;
   over = 'side';
   expandHeight = '42px';
@@ -38,14 +38,13 @@ export class AdminDashboardComponent implements OnInit {
     localStorage.removeItem('role');
     localStorage.removeItem('key');
     localStorage.removeItem('userData');
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/');
   }
 
   showAdmin() {
     this.showadmin = true;
     this.userData.push(localStorage.getItem('userData'));
     this.userData = JSON.parse(this.userData);
-    console.log(this.userData)
   }
   hideForm() { this.showadmin = false; }
 }

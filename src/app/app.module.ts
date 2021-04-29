@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http'
 import { MaterialModule } from './modules/material.module';
 
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -20,6 +19,8 @@ import { BiddarFrontComponent } from './pages/user/biddar-front/biddar-front.com
 import { ProductComponent } from './pages/admin/admin-dashboard/product/product.component';
 import { SharedProductComponent } from './pages/shared/product/product.component';
 import { DialogComponent } from './dialog/dialog.component'
+import { ProductFrontComponent } from './pages/user/product-front/product-front.component';
+import { BidderDialogComponent } from './pages/shared/bidder-dialog/bidder-dialog.component';
 
 @NgModule({
   declarations: [
@@ -28,12 +29,14 @@ import { DialogComponent } from './dialog/dialog.component'
     RegisterComponent,
     AdminDashboardComponent,
     BiddarComponent,
-    AuctionerComponent,
     AuctionerFrontComponent,
     BiddarFrontComponent,
     ProductComponent,
     DialogComponent,
-    SharedProductComponent
+    SharedProductComponent,
+    AuctionerComponent,
+    ProductFrontComponent,
+    BidderDialogComponent,
   ],
   imports: [
     BrowserModule,
