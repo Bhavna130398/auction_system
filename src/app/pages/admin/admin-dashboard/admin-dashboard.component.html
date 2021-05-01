@@ -50,7 +50,6 @@
                 <mat-nav-list>
                     <a routerLink="/admin/biddar" routerLinkActive="active" mat-list-item class="ml-2"
                         style="font-size:15px;">
-                        <!-- <mat-icon color="warn" matPrefix>account_circle</mat-icon>&nbsp; -->
                         <mat-icon color="primary" matPrefix>monetization_on</mat-icon>&nbsp;
                         Bidder
                     </a>
@@ -121,6 +120,8 @@
                 </div>
             </mat-card>
         </div>
+        <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
+
         <router-outlet *ngIf="!showadmin"></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

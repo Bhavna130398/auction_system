@@ -3,6 +3,9 @@ import { Subscription, from } from 'rxjs';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
+//import { ChartOptions, ChartType, ChartDatasetProperties } from 'chart.js';
+
+
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
@@ -10,16 +13,9 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class AdminDashboardComponent implements OnInit {
   fgpending!: FormGroup;
-  opened = true;
-  over = 'side';
-  expandHeight = '42px';
-  collapseHeight = '42px';
-  displayMode = 'flat';
-  // overlap = false;
-  state: string = 'default';
-  watcher: Subscription;
-  showadmin: boolean = false;
-  userData: any = [];
+  opened = true; over = 'side'; expandHeight = '42px'; collapseHeight = '42px';
+  displayMode = 'flat'; state: string = 'default'; watcher: Subscription;
+  showadmin: boolean = false; userData: any = [];
   constructor(media: MediaObserver, private router: Router, private fb: FormBuilder) {
     this.watcher = media.media$.subscribe((change: MediaChange) => {
       if (change.mqAlias === 'sm' || change.mqAlias === 'xs') {
@@ -32,7 +28,11 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
+
   ngOnInit() { }
+  setChart() {
+
+  }
   logout() {
     sessionStorage.clear();
     localStorage.removeItem('role');

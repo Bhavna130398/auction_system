@@ -44,6 +44,9 @@ export class BiddarFrontComponent implements OnInit {
 
   }
 
+  logout() {
+    this.cs.logout();
+  }
 
   editUser() {
     this.showForm = true;

@@ -23,6 +23,19 @@ export class AuctionerFrontComponent implements OnInit {
       productdiscription: ['', Validators.required],
       productprice: ['', Validators.required],
     });
+
+    this.editAuctioner = this.fb.group({
+      name: [''],
+      email: [''],
+      gender: [''],
+      DOB: [''],
+      mobileNumber: [''],
+      address: [''],
+      isVerified: [''],
+      role: [''],
+      username: [''],
+      password: ['']
+    });
     this.role = localStorage.getItem('role');
     this.key = localStorage.getItem('key');
   }

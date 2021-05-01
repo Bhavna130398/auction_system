@@ -29,7 +29,6 @@ export class BiddarComponent implements OnInit {
   getBidderList() {
     var role = "bidder";
     this.cs.getList(role).subscribe((res: any) => {
-      console.log(res)
       if (res.length !== 0) {
         this.userData = res;
         this.dataSource = new MatTableDataSource(this.userData);

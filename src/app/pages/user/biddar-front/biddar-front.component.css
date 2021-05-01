@@ -23,7 +23,7 @@
   padding: 0 14px;
 }
 .example-spacer {
-  flex: 1 1 auto;
+  flex: 0.95 1 auto;
 }
 .mat-radio-button ~ .mat-radio-button {
     margin-left: 16px;
@@ -39,8 +39,9 @@
     margin: 2px;
     padding: 5px;
     border-bottom: 1px solid rgb(0, 112, 240);
-    background-color: rgb(167, 237, 255);
+    background-color: #5266d8;
     border-radius: 5px;
+    color: white;
   }
   .example-form {
   min-width: 150px;

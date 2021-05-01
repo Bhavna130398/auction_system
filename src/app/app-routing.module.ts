@@ -11,7 +11,6 @@ import { AuthGuard } from './guard/auth.guard';
 import { AuctionerGuard } from './guard/auctioner.guard';
 import { BidderGuard } from './guard/bidder.guard';
 import { ProductComponent } from './pages/admin/admin-dashboard/product/product.component';
-import { ProductFrontComponent } from './pages/user/product-front/product-front.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -27,7 +26,6 @@ const routes: Routes = [
   },
   { path: 'user/auctioner', component: AuctionerFrontComponent, canActivate: [AuctionerGuard] },
   { path: 'user/biddar', component: BiddarFrontComponent, canActivate: [BidderGuard] },
-  { path: 'user/product', component: ProductFrontComponent }
 
 ];
 

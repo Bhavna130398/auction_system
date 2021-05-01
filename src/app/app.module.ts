@@ -19,8 +19,8 @@ import { BiddarFrontComponent } from './pages/user/biddar-front/biddar-front.com
 import { ProductComponent } from './pages/admin/admin-dashboard/product/product.component';
 import { SharedProductComponent } from './pages/shared/product/product.component';
 import { DialogComponent } from './dialog/dialog.component'
-import { ProductFrontComponent } from './pages/user/product-front/product-front.component';
 import { BidderDialogComponent } from './pages/shared/bidder-dialog/bidder-dialog.component';
+import { ProdDetailDialogComponent } from './pages/shared/prod-detail-dialog/prod-detail-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,8 +35,8 @@ import { BidderDialogComponent } from './pages/shared/bidder-dialog/bidder-dialo
     DialogComponent,
     SharedProductComponent,
     AuctionerComponent,
-    ProductFrontComponent,
     BidderDialogComponent,
+    ProdDetailDialogComponent,
   ],
   imports: [
     BrowserModule,
