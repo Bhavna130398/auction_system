@@ -93,6 +93,8 @@
                 </button>
             </mat-toolbar-row>
         </mat-toolbar>
+        <button (click)="add()">Add Point!</button>
+        <div [chart]="chart"></div>
         <div class="showAdmin" *ngIf="showadmin">
             <mat-card>
                 <button mat-icon-button (click)="hideForm()" fxLayoutAlign="end" style="margin-left: 90%;">
@@ -121,7 +123,6 @@
             </mat-card>
         </div>
         <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
-
         <router-outlet *ngIf="!showadmin"></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

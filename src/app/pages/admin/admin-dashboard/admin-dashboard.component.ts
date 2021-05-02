@@ -3,6 +3,7 @@ import { Subscription, from } from 'rxjs';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { Chart } from 'angular-highcharts';
 //import { ChartOptions, ChartType, ChartDatasetProperties } from 'chart.js';
 
 
@@ -13,6 +14,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class AdminDashboardComponent implements OnInit {
   fgpending!: FormGroup;
+  chart: Chart;
   opened = true; over = 'side'; expandHeight = '42px'; collapseHeight = '42px';
   displayMode = 'flat'; state: string = 'default'; watcher: Subscription;
   showadmin: boolean = false; userData: any = [];
@@ -29,8 +31,28 @@ export class AdminDashboardComponent implements OnInit {
   }
 
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.setChart();
+  }
   setChart() {
+    this.chart = new Chart({
+      chart: {
+        type: 'line'
+      },
+      title: {
+        text: 'Linechart'
+      },
+      credits: {
+        enabled: false
+      },
+      series: [
+        {
+          name: 'Line 1',
+          type: 'line',
+          data: [1, 2, 3]
+        }
+      ]
+    });
 
   }
   logout() {
@@ -47,4 +69,8 @@ export class AdminDashboardComponent implements OnInit {
     this.userData = JSON.parse(this.userData);
   }
   hideForm() { this.showadmin = false; }
+
+  add() {
+    this.chart.addPoint(Math.floor(Math.random() * 10));
+  }
 }

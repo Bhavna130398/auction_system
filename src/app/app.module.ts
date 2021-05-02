@@ -6,6 +6,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http'
 import { MaterialModule } from './modules/material.module';
+import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
+import * as more from 'highcharts/highcharts-more.src';
+import * as exporting from 'highcharts/modules/exporting.src';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -47,9 +50,12 @@ import { ProdDetailDialogComponent } from './pages/shared/prod-detail-dialog/pro
     FormsModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    CommonModule
+    CommonModule,
+    ChartModule
   ],
-  providers: [],
+  providers: [
+    { provide: HIGHCHARTS_MODULES, useFactory: () => [more, exporting] }
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
