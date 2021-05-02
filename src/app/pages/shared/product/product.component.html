@@ -20,5 +20,14 @@
         <div fxLayoutAlign="center center" *ngIf="showChip == 'auctioner'">
             <button mat-raised-button color="primary" (click)="showdetail(product)">Show Details</button>
         </div>
+        <div>
+            <mat-chip-list #chipList aria-label="Fruit selection">
+                <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable" [removable]="removable"
+                    (removed)="remove(fruit)">
+                    {{bidData.bidAmount}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+            </mat-chip-list>
+        </div>
     </mat-card-actions>
 </mat-card>

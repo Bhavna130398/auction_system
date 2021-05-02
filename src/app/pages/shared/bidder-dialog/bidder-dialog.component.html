@@ -1,4 +1,7 @@
-<h1 mat-dialog-title style="text-align: center;"> <b>Enter bid details </b> </h1>
+<h1 mat-dialog-title style="text-align: center;">
+    <b>Enter bid details </b>
+</h1>
+<!-- <p>{{this.data.productprice}}</p> -->
 <div mat-dialog-content>
     <form [formGroup]="fgBid" fxLayout="column" class="box">
         <mat-form-field>
@@ -13,7 +16,7 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="Enter product amount" type="number" class="example-right-align"
+            <input matInput placeholder="{{this.data.productprice}}" type="number" class="example-right-align"
                 formControlName="bidAmount">
             <span matPrefix>$&nbsp;</span>
             <span matSuffix>.00</span>
@@ -30,6 +33,8 @@
         <mat-form-field>
             <input matInput placeholder="Comment" formControlName="comment">
         </mat-form-field>
+
+        <p *ngIf="errMsg" style="color: red; padding: 0px;margin: 0px;">{{errMsg}}</p>
 
         <div fxLayout="row" fxLayoutAlign="center center" fxFlex="40">
             <button mat-flat-button color="primary" [disabled]="!fgBid.valid" (click)="submit()">Submit</button>
