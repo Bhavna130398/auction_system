@@ -36,6 +36,7 @@ export class AuctionerFrontComponent implements OnInit {
       username: [''],
       password: ['']
     });
+
     this.role = localStorage.getItem('role');
     this.key = localStorage.getItem('key');
   }
