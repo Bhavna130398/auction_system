@@ -21,13 +21,13 @@ export class RegisterComponent implements OnInit {
       isVerified: ['false'],
       role: ['', Validators.required],
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      bidcoin: ['250']
     });
   }
 
   ngOnInit(): void {
   }
-
 
   onSubmit() {
     this.cs.registerUser(this.fgRegister.value).subscribe((res: any) => {

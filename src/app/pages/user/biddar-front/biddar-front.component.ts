@@ -40,9 +40,7 @@ export class BiddarFrontComponent implements OnInit {
       }
     })
   }
-  onSubmit() {
-
-  }
+  onSubmit() {}
 
   logout() {
     this.cs.logout();

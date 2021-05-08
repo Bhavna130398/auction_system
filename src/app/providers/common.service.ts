@@ -31,9 +31,20 @@ export class CommonService {
   getProduct(data: any) {
     return this.http.post(environment.ApiUrl + 'product/listProduct', data);
   }
+  addBid(data: any) {
+    return this.http.post(environment.ApiUrl + 'bid/bid', data);
+  }
+  updateBid(data: any) {
+    return this.http.post(environment.ApiUrl + 'bid/bidUpdate', data);
+  }
+  removeBid(data: any) {
+    return this.http.post(environment.ApiUrl + 'bid/bidRemove', data);
+  }
+
   drop(data: any) {
     return this.http.post(environment.ApiUrl + 'admin/tableDrop', { tableName: data });
   }
+
 
   logout() {
     localStorage.removeItem('role');
