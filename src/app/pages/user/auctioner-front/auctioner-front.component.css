@@ -23,8 +23,7 @@ mat-card{
   /* border-bottom: 1px solid rgb(0, 112, 240);
     */
   background-color: #5266d8;
-
-  background-color: rgb(167, 237, 255);
+  /* background-color: rgb(167, 237, 255); */
   border-radius: 5px;
 }
 .example-form {
