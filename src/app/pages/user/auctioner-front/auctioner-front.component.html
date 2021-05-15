@@ -79,11 +79,11 @@
             </mat-select>
           </mat-form-field>
 
-          <mat-form-field>
+          <!-- <mat-form-field>
             <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"
               formControlName="password" value="{{userData.password}}">
             <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </mat-form-field>
+          </mat-form-field> -->
 
           <mat-form-field class="example-full-width">
             <input matInput placeholder="Username" formControlName="username" value="{{userData.username}}" required>
@@ -119,7 +119,7 @@
           </mat-form-field>
 
           <div fxLayout="row" fxLayoutAlign="center center" fxFlex="40">
-            <button mat-flat-button color="primary" [disabled]="!editAuctioner.valid" (click)="onSubmit()">
+            <button mat-flat-button color="primary" [disabled]="!editAuctioner.valid" (click)="onUpdate()">
               Edit Auctioner</button>
           </div>
         </form>

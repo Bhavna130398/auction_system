@@ -15,10 +15,6 @@
   background-size: cover;
 }
 
-/* .card{
-    margin-top: 10%;
-} */
-
 .example-icon {
   padding: 0 14px;
 }
@@ -28,13 +24,13 @@
 .mat-radio-button ~ .mat-radio-button {
     margin-left: 16px;
   }
-  .container{
-    height: calc(100vh - 64px);
-  }
-  mat-card{
-    min-width: 450px;
-    margin: auto;
-  }
+.container{
+  height: calc(100vh - 64px);
+}
+mat-card{
+  min-width: 450px;
+  margin: auto;
+}
   .group-heading{
     margin: 2px;
     padding: 5px;

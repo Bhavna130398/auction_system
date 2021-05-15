@@ -56,3 +56,6 @@
 /* mat-chip {
   max-width: 400px;
 } */
+mat-chip {
+  max-width: 200px;
+}

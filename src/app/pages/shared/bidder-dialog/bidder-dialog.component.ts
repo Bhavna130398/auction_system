@@ -15,7 +15,7 @@ export class BidderDialogComponent implements OnInit {
       p_id: [this.data._id],
       u_id: [localStorage.getItem('key')],
       name: ['', Validators.required],
-      bidAmount: ['', Validators.required],
+      bidAmount: ['0', Validators.required],
       comment: [''],
       bidTime: [new Date()]
     });
@@ -25,19 +25,38 @@ export class BidderDialogComponent implements OnInit {
 
   submit() {
     if (this.fgBid.value.bidAmount > this.data.productprice) {
-      this.errMsg = '';
-      this.cs.addBid(this.fgBid.value).subscribe((res: any) => {
-        if (res) {
-          localStorage.setItem('bidData', JSON.stringify(res.data));
-          this.cs.alert('Error', 'Your bid is added succesfully!');
-          this.dialog.closeAll();
-        } else {
-          this.cs.alert('Error', 'Bid is not added!');
-        }
-      })
+      if(localStorage.getItem('bidData') !== null){
+        let data = JSON.parse(localStorage.getItem('bidData'));
+        if (this.fgBid.value.bidAmount > data.bidAmount) {
+          this.cs.addBid(this.fgBid.value).subscribe((res: any) => {
+            if (res) {
+              this.errMsg = '';
+              localStorage.setItem('bidData', JSON.stringify(res));
+              this.cs.alert('Error', 'Your bid is added succesfully!');
+              this.dialog.closeAll();
+            } else {
+              this.cs.alert('Error', 'Bid is not added!');
+            }
+          })
+        }else{
+          this.cs.alert('Error', 'Your bid amount should be greater than old bid amount!');
+          this.errMsg = 'Your bid amount should be greater than old bid amount!';    
+        }  
+      }else{
+        this.errMsg = '';
+        this.cs.addBid(this.fgBid.value).subscribe((res: any) => {
+          if (res) {
+            localStorage.setItem('bidData', JSON.stringify(res));
+            this.cs.alert('Error', 'Your bid is added succesfully!');
+            this.dialog.closeAll();
+          } else {
+            this.cs.alert('Error', 'Bid is not added!');
+          }
+        })
+      }
     } else {
-      this.cs.alert('Error', 'Your bid value should br greater than product amount!');
-      this.errMsg = 'Your bid value should br greater than product amount!';
+      this.cs.alert('Error', 'Your bid amount should be greater than product amount!');
+      this.errMsg = 'Your bid amount should be greater than product amount!';
     }
   }
 }

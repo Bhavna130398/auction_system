@@ -46,13 +46,17 @@ export class SharedProductComponent implements OnInit {
     //   })
   }
   showdetail(data: any) {
+    if(this.bidData !== null){
+      data.bid = this.bidData.bidAmount;
+    }
     const DialogConfig = new MatDialogConfig();
     DialogConfig.disableClose = false;
     DialogConfig.autoFocus = true;
+    console.log(data);
     var dialogref = this.dialog.open(ProdDetailDialogComponent, {
       data: (data),
-      height: '40%',
-      width: '60%'
+      height: '35%',
+      width: '55%'
     })
   }
   remove(fruit: string): void {

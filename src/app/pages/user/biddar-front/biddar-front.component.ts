@@ -12,16 +12,17 @@ export class BiddarFrontComponent implements OnInit {
   editBidder: FormGroup; hide = true; showForm: boolean = false;
   constructor(private cs: CommonService, private fb: FormBuilder) {
     this.editBidder = this.fb.group({
+      _id:[localStorage.getItem('key')],
       name: [''],
       email: [''],
       gender: [''],
       DOB: [''],
       mobileNumber: [''],
       address: [''],
-      isVerified: [''],
+      isVerified: ['false'],
       role: [''],
       username: [''],
-      password: ['']
+      // password: ['123456']
     });
     this.role = localStorage.getItem('role');
     this.key = localStorage.getItem('key');
@@ -40,8 +41,18 @@ export class BiddarFrontComponent implements OnInit {
       }
     })
   }
-  onSubmit() {
-
+  onUpdate() {
+      this.cs.updateUser(this.editBidder.value).subscribe((res:any)=>{
+        if(res){
+          console.log(res);
+          this.cs.alert('Success', 'User update succesfully!');
+          this.showForm = false;
+          this.userData = res.data;
+          localStorage.setItem('userData', JSON.stringify(res.data));
+        }else{
+          this.cs.alert('Error', 'Something went wrong!');
+        }
+      })
   }
 
   logout() {
@@ -54,16 +65,17 @@ export class BiddarFrontComponent implements OnInit {
       this.userData.push(localStorage.getItem('userData'));
       this.userData = JSON.parse(this.userData);
       this.editBidder = this.fb.group({
+        _id:[localStorage.getItem('key')],
         name: [this.userData.name],
         email: [this.userData.email],
         gender: [this.userData.gender],
         DOB: [this.userData.DOB],
         mobileNumber: [this.userData.mobileNumber],
         address: [this.userData.address],
-        isVerified: [this.userData.isVerified],
+        isVerified: ['false'],
         role: [this.userData.role],
         username: [this.userData.username],
-        password: [this.userData.password]
+        // password: ['123456']
       });
     }
   }

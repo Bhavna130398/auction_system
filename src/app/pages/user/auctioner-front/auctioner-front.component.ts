@@ -17,6 +17,7 @@ export class AuctionerFrontComponent implements OnInit {
     const id = localStorage.getItem('userData');
 
     this.fgAddProduct = this.fb.group({
+      Auctioner_Id:[localStorage.getItem('key')],
       productname: ['', Validators.required],
       image: ['', Validators.required],
       producttype: ['', Validators.required],
@@ -25,16 +26,17 @@ export class AuctionerFrontComponent implements OnInit {
     });
 
     this.editAuctioner = this.fb.group({
+      _id:[localStorage.getItem('key')],
       name: [''],
       email: [''],
       gender: [''],
       DOB: [''],
       mobileNumber: [''],
       address: [''],
-      isVerified: [''],
+      isVerified: ['false'],
       role: [''],
       username: [''],
-      password: ['']
+      // password: ['']
     });
 
     this.role = localStorage.getItem('role');
@@ -85,11 +87,11 @@ export class AuctionerFrontComponent implements OnInit {
   }
   updateValues() {
     this.fgAddProduct = this.fb.group({
-      productname: [],
-      image: [],
-      producttype: [],
-      productdiscription: [],
-      productprice: [],
+      productname: [''],
+      image: [''],
+      producttype: [''],
+      productdiscription: [''],
+      productprice: [''],
     });
 
   }
@@ -103,6 +105,7 @@ export class AuctionerFrontComponent implements OnInit {
       this.userData.push(localStorage.getItem('userData'));
       this.userData = JSON.parse(this.userData);
       this.editAuctioner = this.fb.group({
+        _id:[localStorage.getItem('key')],
         name: [this.userData.name],
         email: [this.userData.email],
         gender: [this.userData.gender],
@@ -112,8 +115,21 @@ export class AuctionerFrontComponent implements OnInit {
         isVerified: [this.userData.isVerified],
         role: [this.userData.role],
         username: [this.userData.username],
-        password: [this.userData.password]
+        // password: [this.userData.password]
       });
     }
   }
+  onUpdate() {
+    this.showForm = false; this.editForm = false;
+    this.cs.updateUser(this.editAuctioner.value).subscribe((res:any)=>{
+      if(res){
+        this.cs.alert('Success', 'User update succesfully!');
+        this.showForm = false;
+        this.userData = res.data;
+        localStorage.setItem('userData', JSON.stringify(res.data));
+      }else{
+        this.cs.alert('Error', 'Something went wrong!');
+      }
+    })
+}
 }
