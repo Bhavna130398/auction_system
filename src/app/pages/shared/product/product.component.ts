@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { BidderDialogComponent } from '../bidder-dialog/bidder-dialog.component';
 import { ProdDetailDialogComponent } from '../prod-detail-dialog/prod-detail-dialog.component';
@@ -10,7 +11,7 @@ import { ProdDetailDialogComponent } from '../prod-detail-dialog/prod-detail-dia
   styleUrls: ['./product.component.css']
 })
 export class SharedProductComponent implements OnInit {
-  @Input() product: any; showChip: string = '';
+  @Input() product: any; showChip: string = ''; @Input() role: any;
   visible = true;
   selectable = true;
   removable = true; bidData: any;
@@ -18,11 +19,12 @@ export class SharedProductComponent implements OnInit {
   fruits: string[] = ['Lemon'];
   allFruits: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog, private router:Router) {
     this.bidData = JSON.parse(localStorage.getItem('bidData'));
   }
 
   ngOnInit(): void {
+    console.log(this.role);
     if (localStorage.getItem('comeFrom') == 'admin') {
       this.showChip = 'admin';
     } else if (localStorage.getItem('comeFrom') == 'auctioner') {
@@ -45,6 +47,10 @@ export class SharedProductComponent implements OnInit {
     //     this.getAuctionerList();
     //   })
   }
+  onLogin(){
+    this.router.navigateByUrl('/login');
+  }
+
   showdetail(data: any) {
     if(this.bidData !== null){
       data.bid = this.bidData.bidAmount;

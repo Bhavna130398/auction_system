@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { CommonService } from 'src/app/providers/common.service';
 
 @Component({
@@ -8,9 +10,21 @@ import { CommonService } from 'src/app/providers/common.service';
   styleUrls: ['./biddar-front.component.css']
 })
 export class BiddarFrontComponent implements OnInit {
+  opened = true; over = 'side'; expandHeight = '42px'; collapseHeight = '42px';
+  displayMode = 'flat'; state: string = 'default'; watcher: Subscription;
+  showadmin: boolean = false;
   role: any; key: any; product: any = []; userData: any = [];
   editBidder: FormGroup; hide = true; showForm: boolean = false;
-  constructor(private cs: CommonService, private fb: FormBuilder) {
+  constructor(private cs: CommonService, private fb: FormBuilder, media: MediaObserver) {
+    this.watcher = media.media$.subscribe((change: MediaChange) => {
+      if (change.mqAlias === 'sm' || change.mqAlias === 'xs') {
+        this.opened = false;
+        this.over = 'over';
+      } else {
+        this.opened = true;
+        this.over = 'side';
+      }
+    });
     this.editBidder = this.fb.group({
       _id:[localStorage.getItem('key')],
       name: [''],
@@ -29,13 +43,33 @@ export class BiddarFrontComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAllProducts();
+  }
+
+  getMyProducts(){
+    this.showForm = false;
     var postdata = { role: this.role, _id: this.key }
     this.cs.getProduct(postdata).subscribe((res: any) => {
       if (res) {
         this.product = res;
-        if (localStorage.getItem('role') == 'auctioner') {
-          localStorage.setItem('comeFrom', 'auctioner');
-        }
+        // if (localStorage.getItem('role') == 'auctioner') {
+        //   localStorage.setItem('comeFrom', 'auctioner');
+        // }
+      } else {
+        this.cs.alert('Error', 'No data found!');
+      }
+    })
+  }
+
+  getAllProducts(){
+    this.showForm = false;
+    var postdata = { role: this.role, _id: this.key }
+    this.cs.getProduct(postdata).subscribe((res: any) => {
+      if (res) {
+        this.product = res;
+        // if (localStorage.getItem('role') == 'auctioner') {
+        //   localStorage.setItem('comeFrom', 'auctioner');
+        // }
       } else {
         this.cs.alert('Error', 'No data found!');
       }

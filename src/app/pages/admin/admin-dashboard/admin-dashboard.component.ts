@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription, from } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Chart } from 'angular-highcharts';
-//import { ChartOptions, ChartType, ChartDatasetProperties } from 'chart.js';
-
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -13,11 +11,9 @@ import { Chart } from 'angular-highcharts';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent implements OnInit {
-  fgpending!: FormGroup;
-  chart: Chart;
-  opened = true; over = 'side'; expandHeight = '42px'; collapseHeight = '42px';
-  displayMode = 'flat'; state: string = 'default'; watcher: Subscription;
-  showadmin: boolean = false; userData: any = [];
+  fgpending!: FormGroup; chart: Chart; opened = true; over = 'side'; expandHeight = '42px'; collapseHeight = '42px';displayMode = 'flat'; state: string = 'default'; watcher: Subscription;
+  showChart: any = 'chart'; showadmin: boolean = false; userData: any = []; flag:any;
+
   constructor(media: MediaObserver, private router: Router, private fb: FormBuilder) {
     this.watcher = media.media$.subscribe((change: MediaChange) => {
       if (change.mqAlias === 'sm' || change.mqAlias === 'xs') {
@@ -30,11 +26,11 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
-
   ngOnInit() {
     this.setChart();
   }
   setChart() {
+    this.showChart = 'chart';
     this.chart = new Chart({
       chart: {
         type: 'line'
@@ -65,10 +61,14 @@ export class AdminDashboardComponent implements OnInit {
 
   showAdmin() {
     this.showadmin = true;
+    this.showChart = 'form';
     this.userData.push(localStorage.getItem('userData'));
     this.userData = JSON.parse(this.userData);
   }
-  hideForm() { this.showadmin = false; }
+  hideForm() { 
+    this.showadmin = false; 
+    this.showChart = 'chart';
+  }
 
   add() {
     this.chart.addPoint(Math.floor(Math.random() * 10));

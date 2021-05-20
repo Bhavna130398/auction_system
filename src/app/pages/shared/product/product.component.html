@@ -11,17 +11,18 @@
     </mat-card-content>
     <mat-card-actions style="padding: 10px;">
         <div fxLayoutAlign="center center" *ngIf="showChip == 'bidder'">
-            <mat-chip color="primary">${{product.productprice}} </mat-chip>
-            <button mat-raised-button color="primary" (click)="opendialog(product)">Want to bid</button>
+            <button mat-raised-button style="background-color: #005773; color:white">Price ${{product.productprice}}</button>
+            <button mat-raised-button *ngIf="role != 'home'" style="background-color: #005773; color:white" (click)="opendialog(product)">Want to bid</button>
+            <button mat-raised-button *ngIf="role == 'home'" style="background-color: #005773; color:white" (click)="onLogin()">Want to bid</button>
         </div>
         <div fxLayoutAlign="center center" *ngIf="showChip == 'admin'">
-            <button mat-raised-button color="primary" (click)="showdetail(product)">Show Details</button>
+            <button mat-raised-button style="background-color: #005773; color:white" (click)="showdetail(product)">Show Details</button>
         </div>
         <div fxLayoutAlign="center center" *ngIf="showChip == 'auctioner'">
-            <button mat-raised-button color="primary" (click)="showdetail(product)">Show Details</button>
+            <button mat-raised-button style="background-color: #005773; color:white" (click)="showdetail(product)">Show Details</button>
         </div>
         <mat-divider></mat-divider>
-        <div *ngIf="bidData && bidData.p_id == product._id" style="background-color: #5266d8;">
+        <div *ngIf="bidData && bidData.p_id == product._id" style="background-color: #005773;" >
             <p style="color: white; text-align: center;"><b> {{bidData.bidAmount}}</b></p>
         </div>
     </mat-card-actions>

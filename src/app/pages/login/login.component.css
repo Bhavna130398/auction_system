@@ -1,5 +1,6 @@
 mat-card{
-    min-width:350px;
+    min-width:450px;
+    height: 210px;
     margin: auto;
 }
 .example-icon {

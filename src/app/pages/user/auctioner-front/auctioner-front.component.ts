@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { CommonService } from 'src/app/providers/common.service';
 
 @Component({
@@ -12,10 +14,21 @@ export class AuctionerFrontComponent implements OnInit {
   fgAddProduct: FormGroup; showForm: boolean = false; userData: any = []; editForm = false;
   private base64textString: String = ""; role: any; key: any; product: any = [];
   editAuctioner: FormGroup;
-
-  constructor(private fb: FormBuilder, private cs: CommonService, private router: Router) {
+  opened = true; over = 'side'; expandHeight = '42px'; collapseHeight = '42px';
+  displayMode = 'flat'; state: string = 'default'; watcher: Subscription;
+ 
+  constructor(private fb: FormBuilder, private cs: CommonService, private router: Router, media: MediaObserver) {
     const id = localStorage.getItem('userData');
 
+    this.watcher = media.media$.subscribe((change: MediaChange) => {
+      if (change.mqAlias === 'sm' || change.mqAlias === 'xs') {
+        this.opened = false;
+        this.over = 'over';
+      } else {
+        this.opened = true;
+        this.over = 'side';
+      }
+    });
     this.fgAddProduct = this.fb.group({
       Auctioner_Id:[localStorage.getItem('key')],
       productname: ['', Validators.required],
@@ -44,6 +57,9 @@ export class AuctionerFrontComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getProduct();
+  }
+  getProduct(){
     var postdata = { role: this.role, _id: this.key }
     this.cs.getProduct(postdata).subscribe((res: any) => {
       if (res) {
@@ -80,6 +96,8 @@ export class AuctionerFrontComponent implements OnInit {
       if (res) {
         this.cs.alert('Success', 'Product added succesfully!');
         this.fgAddProduct.reset();
+        this.getProduct();  
+        this.showForm = false; this.editForm = false;
       } else {
         this.cs.alert('Error', 'Product added succesfully!');
       }

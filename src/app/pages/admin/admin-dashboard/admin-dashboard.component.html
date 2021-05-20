@@ -1,56 +1,28 @@
-<mat-sidenav-container class="container-sidenav" style="width: 100%;">
-    <mat-sidenav #sidenav [(mode)]="over" [(opened)]="opened" class="bottom-to-top">
+<mat-sidenav-container class="container-sidenav" style="width: 100%; background-color: whitesmoke;">
+    <mat-sidenav #sidenav [(mode)]="over" [(opened)]="opened" class="bottom-to-top" style="background-color: whitesmoke;">
         <div class="my-2" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
             <div class="with-bg"></div>
             <div>
                 <a style="text-align: center;">
-                    <h3 style="color: #3f51b5;">Auctioner System</h3>
+                    <h3 style="color:#005773;">Auctioner System</h3>
                     <!-- <img src="../../../assets/images/application_square.png"
                         style="margin: 2px; padding: 1px; object-fit: cover;"> -->
                 </a>
             </div>
         </div>
+        <mat-divider></mat-divider>
         <div class="mt-3">
             <mat-nav-list>
                 <a routerLink="/admin" routerLinkActive="active" mat-list-item class="ml-2" style="font-size:15px;">
-                    <mat-icon color="primary" matPrefix>tv</mat-icon>&nbsp;
+                    <mat-icon style="color: #005773;" matPrefix>tv</mat-icon>&nbsp;
                     Dashboard
                 </a>
             </mat-nav-list>
             <mat-accordion multi="true" [displayMode]="displayMode">
-                <!-- <mat-expansion-panel class="no-shadow">
-                    <mat-expansion-panel-header fxLayout="row" [expandedHeight]="expandHeight"
-                        [collapsedHeight]="collapseHeight">
-                        <mat-panel-title>
-                            <mat-icon color="primary" matPrefix>folder</mat-icon>
-                            <a mat-button>Master</a>
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <mat-nav-list class="ml-0" dense>
-                        <mat-list-item>
-                            <a routerLink="/dashboard/master/user" routerLinkActive="active">User</a>
-                        </mat-list-item>
-                        <mat-list-item>
-                            <a routerLink="/dashboard/master/role" routerLinkActive="active">Role</a>
-                        </mat-list-item>
-                        <mat-list-item>
-                            <a routerLink="/dashboard/master/customer-type" routerLinkActive="active">Customer
-                                Type</a>
-                        </mat-list-item>
-                        <mat-list-item>
-                            <a routerLink="/dashboard/master/insurance" routerLinkActive="active">Insurance</a>
-                        </mat-list-item>
-                        <mat-list-item>
-                            <a routerLink="/dashboard/master/payment-mode" routerLinkActive="active">Payment
-                                Mode</a>
-                        </mat-list-item>
-                    </mat-nav-list>
-                </mat-expansion-panel> -->
-
                 <mat-nav-list>
                     <a routerLink="/admin/biddar" routerLinkActive="active" mat-list-item class="ml-2"
                         style="font-size:15px;">
-                        <mat-icon color="primary" matPrefix>monetization_on</mat-icon>&nbsp;
+                        <mat-icon style="color: #005773;" matPrefix>monetization_on</mat-icon>&nbsp;
                         Bidder
                     </a>
                 </mat-nav-list>
@@ -58,15 +30,22 @@
                 <mat-nav-list>
                     <a routerLink="/admin/auctioner" routerLinkActive="active" mat-list-item class="ml-2"
                         style="font-size:15px;">
-                        <mat-icon color="primary" matPrefix>account_circle</mat-icon>&nbsp;
+                        <mat-icon style="color: #005773;" matPrefix>account_circle</mat-icon>&nbsp;
                         Auctioner
                     </a>
                 </mat-nav-list>
                 <mat-nav-list>
                     <a routerLink="product" routerLinkActive="active" mat-list-item class="ml-2"
                         style="font-size:15px;">
-                        <mat-icon color="primary" matPrefix>shopping_basket</mat-icon>&nbsp;
+                        <mat-icon style="color: #005773;" matPrefix>shopping_basket</mat-icon>&nbsp;
                         Products
+                    </a>
+                </mat-nav-list>
+                <mat-nav-list>
+                    <a routerLink="bids" routerLinkActive="active" mat-list-item class="ml-2"
+                        style="font-size:15px;">
+                        <mat-icon style="color: #005773;" matPrefix>monetization_on</mat-icon>&nbsp;
+                        BidList
                     </a>
                 </mat-nav-list>
             </mat-accordion>
@@ -80,9 +59,9 @@
     </mat-sidenav>
     <mat-sidenav-content class="container1">
         <span class="example-spacer"></span>
-        <mat-toolbar color="primary">
+        <mat-toolbar style="background-color: #005773">
             <mat-toolbar-row>
-                <button mat-icon-button (click)="sidenav.toggle()" fxShow.sm="true" fxShow.gt-sm="false">
+                <button mat-icon-button (click)="sidenav.toggle()" fxShow.sm="true" fxShow.gt-sm="true" style="color: white;">
                     <mat-icon>menu</mat-icon>
                 </button>
                 <span class="example-spacer"></span>
@@ -93,13 +72,11 @@
                 </button>
             </mat-toolbar-row>
         </mat-toolbar>
-        <button (click)="add()">Add Point!</button>
-        <div [chart]="chart"></div>
-        <div class="showAdmin" *ngIf="showadmin">
+        <mat-card *ngIf="showChart == 'chart'" style="width: 500px;">
+            <div [chart]="chart"></div>
+        </mat-card>
+        <div class="showAdmin" *ngIf="showChart == 'form'">
             <mat-card>
-                <button mat-icon-button (click)="hideForm()" fxLayoutAlign="end" style="margin-left: 90%;">
-                    <mat-icon>close</mat-icon>
-                </button>
                 <div class="example-container">
                     <mat-form-field>
                         <input matInput placeholder="Input" value="{{userData.name}}" readonly>
@@ -120,9 +97,12 @@
                         <input matInput placeholder="Input" value="{{userData.username}}" readonly>
                     </mat-form-field>
                 </div>
+                <button mat-raised-button (click)="hideForm()" fxLayoutAlign="end" style=" background-color: #005773; color: white;" >
+                    Cancel
+                </button>
             </mat-card>
         </div>
-        <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
-        <router-outlet *ngIf="!showadmin"></router-outlet>
+
+        <router-outlet *ngIf="showChart != '' "></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

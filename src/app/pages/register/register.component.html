@@ -1,20 +1,23 @@
-<div class="container">
-    <mat-toolbar>
+  <div class="main">
+    <mat-toolbar style="background-color: rgba(7,26,40,255)">
         <mat-toolbar-row>
+            <button fxShow.xs="false" fxShow.sm="false" fxShow.md="true" fxShow.lg="true" mat-button routerLink="/login"
+            routerLinkActive="active">
+            <img class="logo-img" src="assets/images/tes-logo.jpeg">
+        </button>
             <span class="example-spacer"></span>
-            <button fxShow.xs="true" fxShow.sm="true" fxShow.md="true" fxShow.lg="true" mat-button routerLink="/login"
+            <button style="color: white;" fxShow.xs="true" fxShow.sm="true" fxShow.md="true" fxShow.lg="true" mat-button routerLink="/login"
                 routerLinkActive="active">
-                <mat-icon>lock</mat-icon>
+                <mat-icon style="color: white;">lock</mat-icon>
                 Login
             </button>
         </mat-toolbar-row>
     </mat-toolbar>
     
-    <div class="container-form" fxLayoutAlign="center center" >
+    <div class="container-form" style="float: left;">
         <mat-card>
-            <mat-card-header>
-                <mat-card-title>Create Your Free Account</mat-card-title>
-                <!-- <mat-card-subtitle>You must be over 12 years old to register.</mat-card-subtitle> -->
+            <mat-card-header fxLayoutAlign="center center">
+                <mat-card-title style="color: rgb(44, 44, 116);"><b>Create Your Free Account</b></mat-card-title>
             </mat-card-header>
             <mat-card-content>
                 <form [formGroup]="fgRegister" fxLayout="column">
@@ -141,7 +144,7 @@
                     </mat-form-field>
     
                     <div fxLayout="row" fxLayoutAlign="center center" fxFlex="40">
-                        <button mat-flat-button color="primary" [disabled]="!fgRegister.valid" (click)="onSubmit()">
+                        <button mat-flat-button style="background-color: rgb(44, 44, 116);color:white" [disabled]="!fgRegister.valid" (click)="onSubmit()">
                             Register</button>
                     </div>
                 </form>
@@ -149,3 +152,5 @@
         </mat-card>
     </div>
 </div>
+<div class="container"></div>
+

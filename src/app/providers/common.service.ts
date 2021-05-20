@@ -44,6 +44,11 @@ export class CommonService {
     return this.http.post(environment.ApiUrl + 'bid/bidRemove', data);
   }
 
+  getBidList(){
+    let data = {}
+    return this.http.post(environment.ApiUrl + 'bid/bidListByDate', data);
+  }
+
   drop(data: any) {
     return this.http.post(environment.ApiUrl + 'admin/tableDrop', { tableName: data });
   }
@@ -54,6 +59,7 @@ export class CommonService {
     localStorage.removeItem('key');
     localStorage.removeItem('userData');
     localStorage.removeItem('comeFrom');
+    localStorage.removeItem('bidData');
     this.router.navigate(['/login']);
   }
 

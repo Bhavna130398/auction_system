@@ -1,27 +1,20 @@
-<mat-toolbar style="position: fixed">
+<mat-toolbar style="position: fixed; background-color: #092530;">
     <mat-toolbar-row>
         <button fxShow.xs="false" fxShow.sm="false" fxShow.md="true" fxShow.lg="true" mat-button routerLink="/login"
             routerLinkActive="active">
-            <img class="logo-img" src="../../../assets/images/auction-icon.png">
+            <img class="logo-img" src="assets/images/tes-logo.jpeg">
         </button>
         <span class="example-spacer"></span>
-        <button fxShow.xs="true" fxShow.sm="true" fxShow.md="true" fxShow.lg="true" mat-button routerLink="/register"
-            routerLinkActive="active">
-            <mat-icon>add_circle</mat-icon>
-            Create Account
+        <button fxShow.xs="true" fxShow.sm="true" fxShow.md="true" fxShow.lg="true" mat-button routerLink="/register" routerLinkActive="active" style="color:white;">
+            <mat-icon>account_circle</mat-icon>
+            Register Account
         </button>
-
-        <!-- <button fxShow.xs="true" fxShow.sm="true" fxShow.md="true" fxShow.lg="true" mat-button routerLink="/login"
-            routerLinkActive="active">
-            <mat-icon>lock</mat-icon>
-            Login
-        </button> -->
     </mat-toolbar-row>
 </mat-toolbar>
 
 <div class="container" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="center center">
     <mat-card>
-        <mat-card-header>
+        <mat-card-header fxLayoutAlign="center center">
             <mat-card-title><b>Account Login</b></mat-card-title>
         </mat-card-header>
         <mat-card-content>
@@ -51,10 +44,11 @@
                         </mat-error>
                     </mat-error>
                 </mat-form-field>
+                <br />
                 <div fxLayout="row" fxLayoutAlign="center center" fxFlex="40">
-                    <button mat-flat-button color="primary" [disabled]="!fgLogin.valid"
+                    <button mat-flat-button style="background-color: #092530; color: white;" [disabled]="!fgLogin.valid"
                         (click)="submit()">Login</button>
-                </div><br />
+                </div>
             </form>
         </mat-card-content>
     </mat-card>

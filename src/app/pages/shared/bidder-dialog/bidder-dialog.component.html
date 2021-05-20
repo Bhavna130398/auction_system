@@ -37,7 +37,7 @@
         <p *ngIf="errMsg" style="color: red; padding: 0px;margin: 0px;">{{errMsg}}</p>
 
         <div fxLayout="row" fxLayoutAlign="center center" fxFlex="40">
-            <button mat-flat-button color="primary" [disabled]="!fgBid.valid" (click)="submit()">Submit</button>
+            <button mat-flat-button style="background-color: #005773; color: white;" [disabled]="!fgBid.valid" (click)="submit()">Submit</button>
         </div>
     </form>
 </div>
