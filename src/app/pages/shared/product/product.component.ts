@@ -47,6 +47,8 @@ export class SharedProductComponent implements OnInit {
     //     this.getAuctionerList();
     //   })
   }
+
+  
   onLogin(){
     this.router.navigateByUrl('/login');
   }
@@ -72,4 +74,5 @@ export class SharedProductComponent implements OnInit {
     }
   }
 
+  
 }
