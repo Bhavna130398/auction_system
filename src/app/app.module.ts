@@ -26,6 +26,7 @@ import { BidderDialogComponent } from './pages/shared/bidder-dialog/bidder-dialo
 import { ProdDetailDialogComponent } from './pages/shared/prod-detail-dialog/prod-detail-dialog.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BidlistComponent } from './pages/admin/admin-dashboard/bidlist/bidlist.component';
+import { DefaultComponent } from './pages/admin/admin-dashboard/default/default.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { BidlistComponent } from './pages/admin/admin-dashboard/bidlist/bidlist.
     ProdDetailDialogComponent,
     HomeComponent,
     BidlistComponent,
+    DefaultComponent,
   ],
   imports: [
     BrowserModule,

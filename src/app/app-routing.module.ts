@@ -13,14 +13,16 @@ import { BidderGuard } from './guard/bidder.guard';
 import { ProductComponent } from './pages/admin/admin-dashboard/product/product.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BidlistComponent } from './pages/admin/admin-dashboard/bidlist/bidlist.component';
+import { DefaultComponent } from './pages/admin/admin-dashboard/default/default.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   {
     path: 'admin', canActivate: [AuthGuard], component: AdminDashboardComponent,
     children: [
+      { path: '', component: DefaultComponent },
       { path: 'biddar', component: BiddarComponent },
       { path: 'auctioner', component: AuctionerComponent },
       { path: 'product', component: ProductComponent },
