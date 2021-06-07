@@ -53,12 +53,18 @@ export class AdminDashboardComponent implements AfterViewInit {
     this.router.navigateByUrl('/');
   }
 
+  // showAdmin() {
+  //   this.child.ShowAdmin();
+  //   this.showadmin = true;
+  //   this.showChart = 'form';
+  //   this.userData.push(localStorage.getItem('userData'));
+  //   this.userData = JSON.parse(this.userData);
+  // }
+
   showAdmin() {
-    this.child.ShowAdmin();
     this.showadmin = true;
     this.showChart = 'form';
-    this.userData.push(localStorage.getItem('userData'));
-    this.userData = JSON.parse(this.userData);
+    this.userData = JSON.parse(localStorage.getItem('userData'));
   }
   hideForm() {
     this.showChart = 'chart';

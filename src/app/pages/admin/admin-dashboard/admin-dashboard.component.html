@@ -49,7 +49,6 @@
                     </a>
                 </mat-nav-list>
             </mat-accordion>
-
             <mat-nav-list>
                 <a mat-list-item class="ml-2" style="font-size:15px;" (click)="logout()">
                     <mat-icon color="warn" matPrefix>power_settings_new</mat-icon>&nbsp;Logout
@@ -66,13 +65,9 @@
                     <mat-icon>menu</mat-icon>
                 </button>
                 <span class="example-spacer"></span>
-                <button mat-icon-button (click)="showAdmin()">
-                    <mat-icon class="example-icon" aria-hidden="false" aria-label="Admin">
-                        account_circle
-                    </mat-icon>
-                </button>
             </mat-toolbar-row>
         </mat-toolbar>
+        <br />
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

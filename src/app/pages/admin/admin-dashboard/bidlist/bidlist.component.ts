@@ -11,8 +11,8 @@ export class BidlistComponent implements OnInit {
   constructor(private cs: CommonService) { }
 
   ngOnInit(): void {
-    this.cs.getBidList().subscribe((res:any)=>{
-      if(res.length != 0){
+    this.cs.getBidList().subscribe((res: any) => {
+      if (res.length != 0) {
         this.bidData = res;
         console.log(this.bidData);
       }

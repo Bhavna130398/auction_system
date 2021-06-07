@@ -12,22 +12,67 @@ export class DefaultComponent implements OnInit {
   showChart: any = 'chart';
   count: any;
   chart: Chart;
+  chart1: Chart;
   showadmin: boolean = false;
   userData: any = [];
-
+  aCount: any;
+  bCount: any;
+  data: any[];
   constructor(private cs: CommonService) { }
 
   ngOnInit(): void {
-    this.setChart();
+
     this.cs.getBidList().subscribe((res: any) => {
       if (res.length != 0) {
-        console.log(res);
+        this.data = res;
+        this.setChart(this.data);
         this.count = res.length;
+
       }
     })
 
+    if ((localStorage.getItem('auctionCount') && localStorage.getItem('bidderCount')) !== null) {
+      this.aCount = localStorage.getItem('auctionCount');
+      this.bCount = localStorage.getItem('bidderCount')
+    }
+    this.showChart1();
   }
-  setChart() {
+
+  showChart1() {
+    this.showChart = 'chart';
+    this.chart1 = new Chart({
+      chart: {
+        type: 'bar'
+      },
+      title: {
+        text: 'bar'
+      },
+      credits: {
+        enabled: false
+      },
+      xAxis: {
+        title: {
+          text: 'Week days'
+        },
+        categories: ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'],
+      },
+      yAxis: {
+        title: {
+          text: 'Number Of Bids'
+        }
+      },
+      series: [{
+        type: 'bar',
+        data: [10, 15, 12, 8, 7, 5, 7]
+      }],
+    });
+  }
+  setChart(data: any) {
+    console.log(data);
+
+    for (let i = 0; i < data.length; i++) {
+      console.log(data[i])
+    }
     this.showChart = 'chart';
     this.chart = new Chart({
       chart: {
@@ -39,19 +84,26 @@ export class DefaultComponent implements OnInit {
       credits: {
         enabled: false
       },
-      series: [
-        {
-          name: 'Line 1',
-          type: 'line',
-          data: [1, 2, 3]
+      xAxis: {
+        title: {
+          text: 'Week days'
+        },
+        categories: [],
+      },
+      yAxis: {
+        title: {
+          text: 'No Of Bids'
         }
-      ]
+      },
+      series: [{
+        type: 'line',
+        data: [10, 15, 12, 8, 7, 5, 7]
+      }],
     });
   }
   ShowAdmin() {
     this.showadmin = true;
     this.showChart = 'form';
-    // this.userData.push(localStorage.getItem('userData'));
     this.userData = JSON.parse(localStorage.getItem('userData'));
   }
   hideForm() {

@@ -40,6 +40,7 @@ export class AuctionerComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.userData);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+        localStorage.setItem('auctionCount', JSON.stringify(this.userData.length));
       }
       else {
         this.cs.alert('Error', 'No data found!');

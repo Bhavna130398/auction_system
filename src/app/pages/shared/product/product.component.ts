@@ -19,12 +19,11 @@ export class SharedProductComponent implements OnInit {
   fruits: string[] = ['Lemon'];
   allFruits: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
 
-  constructor(private dialog: MatDialog, private router:Router) {
+  constructor(private dialog: MatDialog, private router: Router) {
     this.bidData = JSON.parse(localStorage.getItem('bidData'));
   }
 
   ngOnInit(): void {
-    console.log(this.role);
     if (localStorage.getItem('comeFrom') == 'admin') {
       this.showChip = 'admin';
     } else if (localStorage.getItem('comeFrom') == 'auctioner') {
@@ -48,19 +47,18 @@ export class SharedProductComponent implements OnInit {
     //   })
   }
 
-  
-  onLogin(){
+
+  onLogin() {
     this.router.navigateByUrl('/login');
   }
 
   showdetail(data: any) {
-    if(this.bidData !== null){
+    if (this.bidData !== null) {
       data.bid = this.bidData.bidAmount;
     }
     const DialogConfig = new MatDialogConfig();
     DialogConfig.disableClose = false;
     DialogConfig.autoFocus = true;
-    console.log(data);
     var dialogref = this.dialog.open(ProdDetailDialogComponent, {
       data: (data),
       height: '35%',
@@ -74,5 +72,5 @@ export class SharedProductComponent implements OnInit {
     }
   }
 
-  
+
 }

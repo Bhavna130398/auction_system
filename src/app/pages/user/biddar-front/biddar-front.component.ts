@@ -26,7 +26,7 @@ export class BiddarFrontComponent implements OnInit {
       }
     });
     this.editBidder = this.fb.group({
-      _id:[localStorage.getItem('key')],
+      _id: [localStorage.getItem('key')],
       name: [''],
       email: [''],
       gender: [''],
@@ -44,24 +44,24 @@ export class BiddarFrontComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProducts();
+    if (localStorage.getItem('userData') !== null) {
+      this.userData = JSON.parse(localStorage.getItem('userData'))
+    }
   }
 
-  getMyProducts(){
+  getMyProducts() {
     this.showForm = false;
-    var postdata = { role: this.role, _id: this.key }
+    var postdata = { role: this.role, _id: this.key, myProduct: 'myProduct' }
     this.cs.getProduct(postdata).subscribe((res: any) => {
       if (res) {
         this.product = res;
-        // if (localStorage.getItem('role') == 'auctioner') {
-        //   localStorage.setItem('comeFrom', 'auctioner');
-        // }
       } else {
         this.cs.alert('Error', 'No data found!');
       }
     })
   }
 
-  getAllProducts(){
+  getAllProducts() {
     this.showForm = false;
     var postdata = { role: this.role, _id: this.key }
     this.cs.getProduct(postdata).subscribe((res: any) => {
@@ -76,17 +76,17 @@ export class BiddarFrontComponent implements OnInit {
     })
   }
   onUpdate() {
-      this.cs.updateUser(this.editBidder.value).subscribe((res:any)=>{
-        if(res){
-          console.log(res);
-          this.cs.alert('Success', 'User update succesfully!');
-          this.showForm = false;
-          this.userData = res.data;
-          localStorage.setItem('userData', JSON.stringify(res.data));
-        }else{
-          this.cs.alert('Error', 'Something went wrong!');
-        }
-      })
+    this.cs.updateUser(this.editBidder.value).subscribe((res: any) => {
+      if (res) {
+        console.log(res);
+        this.cs.alert('Success', 'User update succesfully!');
+        this.showForm = false;
+        this.userData = res.data;
+        localStorage.setItem('userData', JSON.stringify(res.data));
+      } else {
+        this.cs.alert('Error', 'Something went wrong!');
+      }
+    })
   }
 
   logout() {
@@ -99,7 +99,7 @@ export class BiddarFrontComponent implements OnInit {
       this.userData.push(localStorage.getItem('userData'));
       this.userData = JSON.parse(this.userData);
       this.editBidder = this.fb.group({
-        _id:[localStorage.getItem('key')],
+        _id: [localStorage.getItem('key')],
         name: [this.userData.name],
         email: [this.userData.email],
         gender: [this.userData.gender],

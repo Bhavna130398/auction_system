@@ -16,7 +16,7 @@ export class AuctionerFrontComponent implements OnInit {
   editAuctioner: FormGroup;
   opened = true; over = 'side'; expandHeight = '42px'; collapseHeight = '42px';
   displayMode = 'flat'; state: string = 'default'; watcher: Subscription;
- 
+
   constructor(private fb: FormBuilder, private cs: CommonService, private router: Router, media: MediaObserver) {
     const id = localStorage.getItem('userData');
 
@@ -30,7 +30,7 @@ export class AuctionerFrontComponent implements OnInit {
       }
     });
     this.fgAddProduct = this.fb.group({
-      Auctioner_Id:[localStorage.getItem('key')],
+      Auctioner_Id: [localStorage.getItem('key')],
       productname: ['', Validators.required],
       image: ['', Validators.required],
       producttype: ['', Validators.required],
@@ -39,7 +39,7 @@ export class AuctionerFrontComponent implements OnInit {
     });
 
     this.editAuctioner = this.fb.group({
-      _id:[localStorage.getItem('key')],
+      _id: [localStorage.getItem('key')],
       name: [''],
       email: [''],
       gender: [''],
@@ -58,8 +58,11 @@ export class AuctionerFrontComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProduct();
+    if (localStorage.getItem('userData') !== null) {
+      this.userData = JSON.parse(localStorage.getItem('userData'))
+    }
   }
-  getProduct(){
+  getProduct() {
     var postdata = { role: this.role, _id: this.key }
     this.cs.getProduct(postdata).subscribe((res: any) => {
       if (res) {
@@ -96,7 +99,7 @@ export class AuctionerFrontComponent implements OnInit {
       if (res) {
         this.cs.alert('Success', 'Product added succesfully!');
         this.fgAddProduct.reset();
-        this.getProduct();  
+        this.getProduct();
         this.showForm = false; this.editForm = false;
       } else {
         this.cs.alert('Error', 'Product added succesfully!');
@@ -123,7 +126,7 @@ export class AuctionerFrontComponent implements OnInit {
       this.userData.push(localStorage.getItem('userData'));
       this.userData = JSON.parse(this.userData);
       this.editAuctioner = this.fb.group({
-        _id:[localStorage.getItem('key')],
+        _id: [localStorage.getItem('key')],
         name: [this.userData.name],
         email: [this.userData.email],
         gender: [this.userData.gender],
@@ -139,15 +142,15 @@ export class AuctionerFrontComponent implements OnInit {
   }
   onUpdate() {
     this.showForm = false; this.editForm = false;
-    this.cs.updateUser(this.editAuctioner.value).subscribe((res:any)=>{
-      if(res){
+    this.cs.updateUser(this.editAuctioner.value).subscribe((res: any) => {
+      if (res) {
         this.cs.alert('Success', 'User update succesfully!');
         this.showForm = false;
         this.userData = res.data;
         localStorage.setItem('userData', JSON.stringify(res.data));
-      }else{
+      } else {
         this.cs.alert('Error', 'Something went wrong!');
       }
     })
-}
+  }
 }
