@@ -14,14 +14,24 @@ export class DefaultComponent implements OnInit {
   chart: Chart;
   showadmin: boolean = false;
   userData: any = [];
-
+  chartDataObj
+  dateArray = []
   constructor(private cs: CommonService) { }
 
   ngOnInit(): void {
-    this.setChart();
+
     this.cs.getBidList().subscribe((res: any) => {
       if (res.length != 0) {
-        console.log(res);
+        var data = []
+        for (let index in res) {
+          this.dateArray.push(index);
+          var point = [index, res[index].length]
+          data.push(point)
+
+
+        }
+        this.chartDataObj = data
+        this.setChart();
         this.count = res.length;
       }
     })
@@ -39,11 +49,22 @@ export class DefaultComponent implements OnInit {
       credits: {
         enabled: false
       },
+      xAxis: {
+        title: {
+          text: 'Week days'
+        },
+        categories: this.dateArray,
+      },
+      yAxis: {
+        title: {
+          text: 'No Of Bids'
+        }
+      },
       series: [
         {
-          name: 'Line 1',
+          name: 'Bid',
           type: 'line',
-          data: [1, 2, 3]
+          data: this.chartDataObj
         }
       ]
     });
@@ -51,7 +72,6 @@ export class DefaultComponent implements OnInit {
   ShowAdmin() {
     this.showadmin = true;
     this.showChart = 'form';
-    // this.userData.push(localStorage.getItem('userData'));
     this.userData = JSON.parse(localStorage.getItem('userData'));
   }
   hideForm() {
