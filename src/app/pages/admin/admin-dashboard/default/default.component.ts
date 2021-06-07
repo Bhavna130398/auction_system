@@ -18,14 +18,22 @@ export class DefaultComponent implements OnInit {
   aCount: any;
   bCount: any;
   data: any[];
+  chartDataObj
+  dateArray = []
   constructor(private cs: CommonService) { }
 
   ngOnInit(): void {
 
     this.cs.getBidList().subscribe((res: any) => {
       if (res.length != 0) {
-        this.data = res;
-        this.setChart(this.data);
+        var data = []
+        for (let index in res) {
+          this.dateArray.push(index);
+          var point = [index, res[index].length]
+          data.push(point);
+        }
+        this.chartDataObj = data
+        this.setChart();
         this.count = res.length;
 
       }
@@ -67,12 +75,8 @@ export class DefaultComponent implements OnInit {
       }],
     });
   }
-  setChart(data: any) {
-    console.log(data);
+  setChart() {
 
-    for (let i = 0; i < data.length; i++) {
-      console.log(data[i])
-    }
     this.showChart = 'chart';
     this.chart = new Chart({
       chart: {
@@ -88,18 +92,22 @@ export class DefaultComponent implements OnInit {
         title: {
           text: 'Week days'
         },
-        categories: [],
+        categories: this.dateArray,
       },
       yAxis: {
         title: {
           text: 'No Of Bids'
         }
       },
-      series: [{
-        type: 'line',
-        data: [10, 15, 12, 8, 7, 5, 7]
-      }],
-    });
+      series: [
+        {
+          name: 'Bid',
+          type: 'line',
+          data: this.chartDataObj
+        }
+      ]
+
+    })
   }
   ShowAdmin() {
     this.showadmin = true;

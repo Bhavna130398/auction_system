@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
       role: ['', Validators.required],
       username: ['', Validators.required],
       password: ['', Validators.required],
-      bidcoin: ['250']
+      bidcoin: [250]
     });
   }
 
