@@ -1,9 +1,12 @@
-<mat-card>
+<mat-card class="mat-example">
     <mat-card-header>
         <mat-card-title>{{product.productname}}</mat-card-title>
     </mat-card-header>
     <img class="circle" width="100%" src="http://localhost:3000/images/{{product._id}}.jpeg"
         onError="this.src='assets/no-image.svg';">
+    <!-- <p *ngIf="bidData.data.bidAmount > 0">
+        <span matBadge="1" matBadgeOverlap="false">bid</span>
+    </p> -->
     <mat-card-content class="footer" style="position:relative;">
         <mat-card-subtitle>
             <p>{{product.productdiscription}}</p>
@@ -11,19 +14,26 @@
     </mat-card-content>
     <mat-card-actions style="padding: 10px;">
         <div fxLayoutAlign="center center" *ngIf="showChip == 'bidder'">
-            <button mat-raised-button style="background-color: #005773; color:white">Price ${{product.productprice}}</button>
-            <button mat-raised-button *ngIf="role != 'home'" style="background-color: #005773; color:white" (click)="opendialog(product)">Want to bid</button>
-            <button mat-raised-button *ngIf="role == 'home'" style="background-color: #005773; color:white" (click)="onLogin()">Want to bid</button>
+            <button mat-raised-button style="background-color: #005773; color:white">Price
+                ${{product.productprice}}</button>
+            <button mat-raised-button *ngIf="role != 'home'" style="background-color: #005773; color:white"
+                (click)="opendialog(product)">Want to bid</button>
+
+            <button mat-raised-button *ngIf="role == 'home'" style="background-color: #005773; color:white"
+                (click)="onLogin()">Want to bid</button>
         </div>
         <div fxLayoutAlign="center center" *ngIf="showChip == 'admin'">
-            <button mat-raised-button style="background-color: #005773; color:white" (click)="showdetail(product)">Show Details</button>
+            <button mat-raised-button style="background-color: #005773; color:white" (click)="showdetail(product)">Show
+                Details</button>
         </div>
         <div fxLayoutAlign="center center" *ngIf="showChip == 'auctioner'">
-            <button mat-raised-button style="background-color: #005773; color:white" (click)="showdetail(product)">Show Details</button>
+            <button mat-raised-button style="background-color: #005773; color:white" (click)="showdetail(product)">Show
+                Details</button>
         </div>
         <mat-divider></mat-divider>
-        <div *ngIf="bidData && bidData.p_id == product._id" style="background-color: #005773;" >
-            <p style="color: white; text-align: center;"><b> {{bidData.bidAmount}}</b></p>
+        <div *ngIf="bidData.data && bidData.data.p_id == product._id "
+            style="background-color: #005773; padding: 0px !important;">
+            <p style="color: white; text-align: center;"><b> {{bidData.data.bidAmount}}</b></p>
         </div>
     </mat-card-actions>
 </mat-card>

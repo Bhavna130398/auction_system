@@ -20,7 +20,9 @@ export class SharedProductComponent implements OnInit {
   allFruits: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
 
   constructor(private dialog: MatDialog, private router: Router) {
-    this.bidData = JSON.parse(localStorage.getItem('bidData'));
+    if (localStorage.getItem('bidData') !== null) {
+      this.bidData = JSON.parse(localStorage.getItem('bidData'));
+    }
   }
 
   ngOnInit(): void {

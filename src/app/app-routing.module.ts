@@ -12,8 +12,9 @@ import { AuctionerGuard } from './guard/auctioner.guard';
 import { BidderGuard } from './guard/bidder.guard';
 import { ProductComponent } from './pages/admin/admin-dashboard/product/product.component';
 import { HomeComponent } from './pages/home/home.component';
-import { BidlistComponent } from './pages/admin/admin-dashboard/bidlist/bidlist.component';
+// import { BidlistComponent } from './pages/admin/admin-dashboard/bidlist/bidlist.component';
 import { DefaultComponent } from './pages/admin/admin-dashboard/default/default.component';
+import { BidlistComponent } from './pages/admin/admin-dashboard/bidlist/bidlist.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

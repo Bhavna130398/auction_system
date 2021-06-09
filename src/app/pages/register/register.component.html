@@ -1,19 +1,19 @@
-  <div class="main">
+<div class="main">
     <mat-toolbar style="background-color: rgba(7,26,40,255)">
         <mat-toolbar-row>
             <button fxShow.xs="false" fxShow.sm="false" fxShow.md="true" fxShow.lg="true" mat-button routerLink="/login"
-            routerLinkActive="active">
-            <img class="logo-img" src="assets/images/tes-logo.jpeg">
-        </button>
-            <span class="example-spacer"></span>
-            <button style="color: white;" fxShow.xs="true" fxShow.sm="true" fxShow.md="true" fxShow.lg="true" mat-button routerLink="/login"
                 routerLinkActive="active">
+                <img class="logo-img" src="assets/images/tes-logo.jpeg">
+            </button>
+            <span class="example-spacer"></span>
+            <button style="color: white;" fxShow.xs="true" fxShow.sm="true" fxShow.md="true" fxShow.lg="true" mat-button
+                routerLink="/login" routerLinkActive="active">
                 <mat-icon style="color: white;">lock</mat-icon>
                 Login
             </button>
         </mat-toolbar-row>
     </mat-toolbar>
-    
+
     <div class="container-form" style="float: left;">
         <mat-card>
             <mat-card-header fxLayoutAlign="center center">
@@ -33,12 +33,11 @@
                             </mat-error>
                         </mat-error>
                     </mat-form-field>
-    
+
                     <mat-form-field>
                         <mat-select placeholder="Select" formControlName="role">
                             <mat-option value="auctioner">Auctionar</mat-option>
                             <mat-option value="bidder">Bidder</mat-option>
-                            <mat-option value="admin">Admin</mat-option>
                         </mat-select>
                         <mat-error
                             *ngIf="fgRegister.controls['role'].invalid && (fgRegister.controls['role'].dirty || fgRegister.controls['role'].touched)"
@@ -49,7 +48,7 @@
                             </mat-error>
                         </mat-error>
                     </mat-form-field>
-    
+
                     <mat-form-field>
                         <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"
                             formControlName="password">
@@ -63,7 +62,7 @@
                             </mat-error>
                         </mat-error>
                     </mat-form-field>
-    
+
                     <mat-form-field class="example-full-width">
                         <input matInput placeholder="Username" formControlName="username" required>
                         <mat-error
@@ -75,7 +74,7 @@
                             </mat-error>
                         </mat-error>
                     </mat-form-field>
-    
+
                     <h4 class="group-heading">Personal Details</h4>
                     <mat-form-field class="example-full-width">
                         <input matInput placeholder="Email ID" formControlName="email" required>
@@ -88,7 +87,7 @@
                             </mat-error>
                         </mat-error>
                     </mat-form-field>
-    
+
                     <mat-form-field class="example-full-width">
                         <input matInput placeholder="Address" formControlName="address" required>
                         <mat-error
@@ -100,7 +99,7 @@
                             </mat-error>
                         </mat-error>
                     </mat-form-field>
-    
+
                     <mat-radio-group formControlName="gender" required>
                         <label>Gender</label><br />
                         <mat-radio-button value="male">Male</mat-radio-button> &nbsp;
@@ -114,7 +113,7 @@
                             </mat-error>
                         </mat-error>
                     </mat-radio-group>
-    
+
                     <mat-form-field>
                         <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="DOB">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -128,7 +127,7 @@
                             </mat-error>
                         </mat-error>
                     </mat-form-field>
-    
+
                     <mat-form-field class="example-full-width">
                         <span matPrefix>+91 &nbsp;</span>
                         <input type="tel" matInput placeholder="Telephone" formControlName="mobileNumber" required>
@@ -142,9 +141,10 @@
                             </mat-error>
                         </mat-error>
                     </mat-form-field>
-    
+
                     <div fxLayout="row" fxLayoutAlign="center center" fxFlex="40">
-                        <button mat-flat-button style="background-color: rgb(44, 44, 116);color:white" [disabled]="!fgRegister.valid" (click)="onSubmit()">
+                        <button mat-flat-button style="background-color: rgb(44, 44, 116);color:white"
+                            [disabled]="!fgRegister.valid" (click)="onSubmit()">
                             Register</button>
                     </div>
                 </form>
@@ -153,4 +153,3 @@
     </div>
 </div>
 <div class="container"></div>
-

@@ -19,7 +19,7 @@ export class CommonService {
   registerUser(data: any) {
     return this.http.post(environment.ApiUrl + 'users/register', data);
   }
-  updateUser(data:any){
+  updateUser(data: any) {
     return this.http.post(environment.ApiUrl + 'users/update', data);
   }
   addProduct(data: any) {
@@ -29,7 +29,7 @@ export class CommonService {
     return this.http.post<User[]>(environment.ApiUrl + 'admin/list', { role: role });
   }
   verifyUser(data: any) {
-    return this.http.post(environment.ApiUrl + 'admin/update', data);
+    return this.http.post(environment.ApiUrl + 'users/update', data);
   }
   getProduct(data: any) {
     return this.http.post(environment.ApiUrl + 'product/listProduct', data);
@@ -44,9 +44,13 @@ export class CommonService {
     return this.http.post(environment.ApiUrl + 'bid/bidRemove', data);
   }
 
-  getBidList(){
+  getBidList() {
     let data = {}
     return this.http.post(environment.ApiUrl + 'bid/bidListByDate', data);
+  }
+
+  getAllBids() {
+    return this.http.post(environment.ApiUrl + 'bid/getBids', {});
   }
 
   drop(data: any) {

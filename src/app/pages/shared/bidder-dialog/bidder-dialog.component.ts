@@ -24,10 +24,13 @@ export class BidderDialogComponent implements OnInit {
   ngOnInit(): void { }
 
   submit() {
-    if (this.fgBid.value.bidAmount > this.data.productprice) {
-      if(localStorage.getItem('bidData') !== null){
-        let data = JSON.parse(localStorage.getItem('bidData'));
-        if (this.fgBid.value.bidAmount > data.bidAmount) {
+
+    if (this.fgBid.value.bidAmount > this.data.productprice && this.fgBid.value.p_id, this.data._id) {
+      let data = JSON.parse(localStorage.getItem('bidData'));
+
+      if (localStorage.getItem('bidData') !== null) {
+        if (!data.data.bidAmount) data.bidAmount = 0;
+        if (this.fgBid.value.bidAmount > data.data.bidAmount && this.fgBid.value.p_id === data.data.p_id) {
           this.cs.addBid(this.fgBid.value).subscribe((res: any) => {
             if (res) {
               this.errMsg = '';
@@ -38,11 +41,11 @@ export class BidderDialogComponent implements OnInit {
               this.cs.alert('Error', 'Bid is not added!');
             }
           })
-        }else{
+        } else {
           this.cs.alert('Error', 'Your bid amount should be greater than old bid amount!');
-          this.errMsg = 'Your bid amount should be greater than old bid amount!';    
-        }  
-      }else{
+          this.errMsg = 'Your bid amount should be greater than old bid amount!';
+        }
+      } else {
         this.errMsg = '';
         this.cs.addBid(this.fgBid.value).subscribe((res: any) => {
           if (res) {

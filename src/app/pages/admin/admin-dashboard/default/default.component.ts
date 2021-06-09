@@ -26,16 +26,18 @@ export class DefaultComponent implements OnInit {
 
     this.cs.getBidList().subscribe((res: any) => {
       if (res.length != 0) {
-        var data = []
+        var data = [];
+        var count = 0;
         for (let index in res) {
           this.dateArray.push(index);
-          var point = [index, res[index].length]
+          count = count + res[index].length;
+          var point = [index, res[index].length];
           data.push(point);
         }
         this.chartDataObj = data
         this.setChart();
-        this.count = res.length;
-
+        this.showChart1();
+        this.count = count;
       }
     })
 
@@ -43,40 +45,36 @@ export class DefaultComponent implements OnInit {
       this.aCount = localStorage.getItem('auctionCount');
       this.bCount = localStorage.getItem('bidderCount')
     }
-    this.showChart1();
   }
 
   showChart1() {
     this.showChart = 'chart';
     this.chart1 = new Chart({
-      chart: {
-        type: 'bar'
-      },
       title: {
         text: 'bar'
       },
       credits: {
         enabled: false
       },
-      xAxis: {
-        title: {
-          text: 'Week days'
-        },
-        categories: ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'],
-      },
       yAxis: {
         title: {
+          text: 'Bids per date'
+        },
+      },
+      xAxis: {
+        title: {
           text: 'Number Of Bids'
-        }
+        },
+        categories: this.dateArray,
       },
       series: [{
-        type: 'bar',
-        data: [10, 15, 12, 8, 7, 5, 7]
+        name: 'Bid',
+        type: 'column',
+        data: this.chartDataObj
       }],
     });
   }
   setChart() {
-
     this.showChart = 'chart';
     this.chart = new Chart({
       chart: {

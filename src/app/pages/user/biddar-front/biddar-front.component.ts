@@ -96,8 +96,7 @@ export class BiddarFrontComponent implements OnInit {
   editUser() {
     this.showForm = true;
     if (localStorage.getItem('userData') !== null) {
-      this.userData.push(localStorage.getItem('userData'));
-      this.userData = JSON.parse(this.userData);
+      this.userData = JSON.parse(localStorage.getItem('userData'));
       this.editBidder = this.fb.group({
         _id: [localStorage.getItem('key')],
         name: [this.userData.name],
@@ -106,7 +105,7 @@ export class BiddarFrontComponent implements OnInit {
         DOB: [this.userData.DOB],
         mobileNumber: [this.userData.mobileNumber],
         address: [this.userData.address],
-        isVerified: ['false'],
+        isVerified: [false],
         role: [this.userData.role],
         username: [this.userData.username],
         // password: ['123456']

@@ -11,7 +11,7 @@ import { CommonService } from 'src/app/providers/common.service';
   styleUrls: ['./auctioner-front.component.css']
 })
 export class AuctionerFrontComponent implements OnInit {
-  fgAddProduct: FormGroup; showForm: boolean = false; userData: any = []; editForm = false;
+  fgAddProduct: FormGroup; showForm: boolean = false; userData: any; editForm = false;
   private base64textString: String = ""; role: any; key: any; product: any = [];
   editAuctioner: FormGroup;
   opened = true; over = 'side'; expandHeight = '42px'; collapseHeight = '42px';
@@ -123,8 +123,7 @@ export class AuctionerFrontComponent implements OnInit {
   editUser() {
     this.showForm = false; this.editForm = true;
     if (localStorage.getItem('userData') !== null) {
-      this.userData.push(localStorage.getItem('userData'));
-      this.userData = JSON.parse(this.userData);
+      this.userData = JSON.parse(localStorage.getItem('userData'));
       this.editAuctioner = this.fb.group({
         _id: [localStorage.getItem('key')],
         name: [this.userData.name],

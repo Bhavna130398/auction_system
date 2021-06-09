@@ -23,8 +23,13 @@ export class LoginComponent implements OnInit {
     this.cs.loginUser(this.fgLogin.value).subscribe((res: any) => {
       if (res.length != 0) {
         if (res.role == 'auctioner') {
-          this.router.navigate(['/user/auctioner']);
-          localStorage.setItem('userData', JSON.stringify(res));
+          if (res.isVerified === "true" || res.isVerified === true) {
+            this.router.navigate(['/user/auctioner']);
+            localStorage.setItem('userData', JSON.stringify(res));
+          } else {
+            this.showError = 'Sorry, You are not varified user.Please contact to admin';
+            this.cs.alert('Error', this.showError);
+          }
         } else if (res.role == 'bidder') {
           this.router.navigateByUrl('/user/biddar');
           localStorage.setItem('userData', JSON.stringify(res));
